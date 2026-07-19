@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Engine tests - CBT-I companion demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<style>
+  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; color: #1a2b2b; }
+  h1 { font-size: 1.2rem; }
+  .summary { font-size: 1rem; margin: 1rem 0; padding: 0.75rem; border-radius: 8px; }
+  .summary.ok { background: #d9ead3; }
+  .summary.fail { background: #fce5cd; }
+  ul { list-style: none; padding: 0; }
+  li { padding: 0.4rem 0.6rem; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+  .pass::before { content: "PASS  "; color: #2e7d32; font-weight: bold; }
+  .fail::before { content: "FAIL  "; color: #b71c1c; font-weight: bold; }
+  .error { color: #b71c1c; display: block; margin-top: 0.2rem; font-family: monospace; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<h1>Sleep engine unit tests</h1>
+<p>These run entirely in the browser against <code>js/engine.js</code>. Not part of the participant-facing app; linked from the README for verification.</p>
+<div id="summary" class="summary">Running...</div>
+<ul id="results"></ul>
+<script type="module">
+  import { results } from './js/engine.test.js';
+  const summary = document.getElementById('summary');
+  const list = document.getElementById('results');
+  const passCount = results.filter(r => r.pass).length;
+  summary.textContent = `${passCount} / ${results.length} passed`;
+  summary.className = 'summary ' + (passCount === results.length ? 'ok' : 'fail');
+  for (const r of results) {
+    const li = document.createElement('li');
+    li.className = r.pass ? 'pass' : 'fail';
+    li.textContent = r.name;
+    if (!r.pass) {
+      const span = document.createElement('span');
+      span.className = 'error';
+      span.textContent = r.error;
+      li.appendChild(span);
+    }
+    list.appendChild(li);
+  }
+</script>
+</body>
+</html>

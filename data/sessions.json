@@ -1,0 +1,214 @@
+{
+  "_source": "Condensed from field_work/main_intervention/slides/session1_slides.tex through session4_slides.tex (Kenya-adapted, Sean Drummond manual-reviewed). No new clinical content was written; wording is condensed from the decks for a phone screen.",
+  "sessions": [
+    {
+      "id": "session1",
+      "number": 1,
+      "title": {
+        "en": "Understanding insomnia and your new sleep window",
+        "sw": "Kuelewa kukosa usingizi na dirisha lako jipya la kulala",
+        "sheng": "Kuelewa insomnia na window yako mpya ya kulala"
+      },
+      "points": [
+        {
+          "en": "Insomnia is sleep that is difficult, short, or unsatisfying, week after week: hard to fall asleep, hard to stay asleep, or waking too early.",
+          "sw": "Kukosa usingizi ni usingizi ambao ni mgumu, mfupi, au usioridhisha, wiki baada ya wiki: ni ugumu wa kupata usingizi, ugumu wa kuendelea kulala, au kuamka mapema mno.",
+          "sheng": "Insomnia ni sleep ambayo iko ngumu, fupi, ama haitoshi, kila wiki: unashindwa kupata usingizi, unashindwa kuendelea kulala, ama unaamkia mapema sana."
+        },
+        {
+          "en": "Poor sleep touches your work, your memory, your mood, your body, and your mind. Good sleep helps every one of them.",
+          "sw": "Usingizi mbaya unaathiri kazi yako, kumbukumbu yako, hisia zako, mwili wako, na akili yako. Usingizi mzuri unasaidia vyote hivyo.",
+          "sheng": "Poor sleep inaeffect kazi yako, kumbukumbu, mood yako, mwili, na akili yako. Ukipata usingizi mzuri, kila kitu kinakuwa poa."
+        },
+        {
+          "en": "Insomnia often starts with a reason, such as stress, illness, or a new baby, but is kept going by the habits that follow: chasing more sleep, lying awake in bed, naps, and untreated worry.",
+          "sw": "Kukosa usingizi mara nyingi kunaanza kwa sababu fulani (msongo wa mawazo, ugonjwa, mtoto mchanga) lakini kunaendelea kutokana na tabia zinazofuata: kutafuta usingizi zaidi, kulala kitandani ukiwa macho, kulala mchana, na wasiwasi usiotibiwa.",
+          "sheng": "Insomnia mara nyingi inaanza na sababu fulani (stress, sickness, mtoto mchanga) lakini inaendelea kwa sababu ya tabia zinazofuata: kuchase sleep zaidi, kulala kitandani ukiwa umeamka, kulala mchana, na kuworry bila kushughulikia."
+        },
+        {
+          "en": "This program works on those habits and on the learned reflex that your bed itself now wakes you up.",
+          "sw": "Programu hii inafanya kazi kwenye tabia hizo na kwenye mwitiko uliojifunza kwamba kitanda chako chenyewe sasa kinakuamsha.",
+          "sheng": "Program hii inafanya kazi na hizo tabia, na na ile reflex uliolearn ambayo bed yako mwenyewe sasa ndio inakuamsha."
+        },
+        {
+          "en": "Two numbers matter: time in bed, your sleep opportunity, and time asleep, your sleep ability. With insomnia, the gap between them is the problem.",
+          "sw": "Nambari mbili ni muhimu: muda kitandani (fursa yako ya kulala) na muda wa kulala (uwezo wako wa kulala). Katika kukosa usingizi, pengo kati ya hizo mbili ndilo tatizo.",
+          "sheng": "Kuna namba mbili muhimu: time in bed (fursa yako ya kulala) na time asleep (uwezo wako wa kulala). Kwa insomnia, gap kati ya hizo mbili ndio noma."
+        },
+        {
+          "en": "Shrinking your time in bed builds sleep debt on purpose. Sleep debt is the tool; one solid block of sleep is the result.",
+          "sw": "Kupunguza muda wako kitandani kunajenga deni la usingizi kwa makusudi. Deni la usingizi ni chombo; usingizi mmoja imara ndio matokeo.",
+          "sheng": "Ku-shrink time in bed inabuild sleep debt on purpose. Sleep debt ndio tool; matokeo ni usingizi mmoja mzito bila kukatika."
+        },
+        {
+          "en": "Your facilitator uses your diary to set your sleep window: your wake time stays fixed, and your window is never shorter than 5 hours.",
+          "sw": "Mwezeshaji wako anatumia shajara yako kuweka dirisha lako la kulala: muda wako wa kuamka unabaki thabiti, na dirisha lako halitakuwa fupi kuliko masaa 5.",
+          "sheng": "Facilitator wako anatumia diary yako ku-set window yako ya kulala: wake time yako inabaki fixed, na window yako haitawai kuwa chini ya masaa 5."
+        },
+        {
+          "en": "Set two alarms: a go-to-bed alarm and a wake-up alarm, every day including weekends.",
+          "sw": "Weka kengele mbili: kengele ya kwenda kulala na kengele ya kuamka, kila siku hata wikendi.",
+          "sheng": "Set alarm mbili: ya kwenda kulala na ya kuamka, kila siku hata weekend."
+        },
+        {
+          "en": "The first two or three nights are hard. That is the plan: less sleep at first builds the debt your body needs, then falling asleep gets faster and sleep gets deeper.",
+          "sw": "Usiku mbili au tatu za kwanza ni ngumu. Huo ndio mpango: kulala kidogo mwanzoni kunajenga deni ambalo mwili wako unahitaji, kisha kupata usingizi kunakuwa haraka na usingizi unakuwa mzito zaidi.",
+          "sheng": "Usiku mbili tatu za kwanza ni ngumu. Ndio mpango yenyewe: kulala kidogo mwanzoni inabuild ile debt ambayo mwili wako inahitaji, kisha unapata usingizi haraka na unalala mzito zaidi."
+        },
+        {
+          "en": "Fill your diary every morning: time in bed, time you tried to sleep, how long it took, awakenings, and when you got up.",
+          "sw": "Jaza shajara yako kila asubuhi: muda ulioingia kitandani, muda ulipojaribu kulala, ulichukua muda gani, kuamka usiku, na ulipoamka kabisa.",
+          "sheng": "Fill diary yako kila asubuhi: time uliingia bed, time ulitry kulala, ilichukua muda gani, ulikuwa unaamka ngapi usiku, na time ulitoka bed."
+        }
+      ],
+      "commitment": {
+        "en": "I will wake up at ___ every day, and not go to bed before ___.",
+        "sw": "Nitaamka saa ___ kila siku, na sitaenda kulala kabla ya saa ___.",
+        "sheng": "Nitaamkanga saa ___ kila siku, na sitaenda kulala mapema kabla ya saa ___."
+      }
+    },
+    {
+      "id": "session2",
+      "number": 2,
+      "title": {
+        "en": "Retrain the bed",
+        "sw": "Fundisha upya kitanda chako",
+        "sheng": "Fundisha upya bed yako"
+      },
+      "points": [
+        {
+          "en": "Every week your facilitator reads your diary and adjusts your window: slept well, it grows by 15 minutes; getting there, it holds; much awake time, it shrinks by 15 minutes. Never below 5 hours.",
+          "sw": "Kila wiki mwezeshaji wako anasoma shajara yako na kurekebisha dirisha lako: ukilala vizuri, linaongezeka kwa dakika 15; ukiwa njiani, linabaki sawa; ukiwa macho sana, linapungua kwa dakika 15. Kamwe si chini ya masaa 5.",
+          "sheng": "Kila week facilitator wako anasoma diary yako na anaadjust window yako: ukilala poa, inaongezeka na dakika 15; ukiwa njiani bado, inabaki vile ilivyo; ukiwa umeamka sana, inapungua na dakika 15. Haiwezi kuwa chini ya masaa 5, kamwe."
+        },
+        {
+          "en": "Your body learns automatic reactions, the same way it knows food is ready or the bus has arrived. Night after night awake in bed teaches your body: bed equals awake.",
+          "sw": "Mwili wako unajifunza miitiko ya kiotomatiki, kama vile unavyojua chakula kiko tayari au gari limefika. Usiku baada ya usiku ukiwa macho kitandani kunafundisha mwili wako: kitanda ni sawa na kuwa macho.",
+          "sheng": "Mwili wako inalearn reactions za automatic, sawa na vile inajua chakula iko ready ama gari imefika. Usiku baada ya usiku ukiwa umeamka bedani inafundisha mwili wako: bed ni sawa na kuwa macho."
+        },
+        {
+          "en": "Anything learned can be taught differently. Sleepy is not the same as tired: tired is a heavy body all day; sleepy is heavy eyes and a nodding head, sleep is close.",
+          "sw": "Chochote kilichojifunzwa kinaweza kufundishwa tofauti. Kusinzia si sawa na kuchoka: kuchoka ni mwili mzito siku nzima; kusinzia ni macho mazito na kichwa kinachoinama, usingizi uko karibu.",
+          "sheng": "Chochote ilearnwa inaweza kufundishwa tofauti. Sleepy si sawa na tired: tired ni mwili mzito siku nzima; sleepy ni macho mazito na kichwa kinaanguka, sleep iko karibu."
+        },
+        {
+          "en": "Four rules to retrain the bed: go to bed only when sleepy; bed is only for sleep; awake 20 minutes, get up; same wake time every day, no naps.",
+          "sw": "Kanuni nne za kufundisha upya kitanda: nenda kulala ukiwa umesinzia tu; kitanda ni kwa ajili ya kulala tu; ukiwa macho kwa dakika 20, amka; muda ule ule wa kuamka kila siku, bila kulala mchana.",
+          "sheng": "Rules nne za kufundisha upya bed: enda kulala ukiwa umesinzia tu; bed ni ya kulala tu; umeamka kwa dakika 20, toka; wake time ile ile kila siku, hakuna kulala mchana."
+        },
+        {
+          "en": "No phone, no eating, no worrying in bed. Everything else you do there teaches your body that bed equals that thing, not sleep.",
+          "sw": "Hakuna simu, hakuna kula, hakuna kuwaza wasiwasi kitandani. Kila kitu kingine unachofanya hapo kinafundisha mwili wako kuwa kitanda ni sawa na kile kitu, si usingizi.",
+          "sheng": "Hakuna simu, hakuna kukula, hakuna kuworry ukiwa bedani. Kila kitu kingine unafanya hapo inafundisha mwili wako bed ni sawa na hicho kitu, sio sleep."
+        },
+        {
+          "en": "If sleep does not come within about 20 minutes, get up. Dim light, something boring, and go back only when sleepy. Repeat as many times as you need to, including in the middle of the night.",
+          "sw": "Usingizi ukikaa hauji ndani ya dakika 20 hivi, amka. Mwanga hafifu, jambo la kuchosha, na rudi tu ukiwa umesinzia. Rudia mara nyingi unavyohitaji, hata usiku wa manane.",
+          "sheng": "Sleep ikikaa haiji ndani ya dakika 20, toka. Mwanga mdogo, kitu boring, urudi tu ukiwa umesinzia. Rudia times zote unahitaji, hata katikati ya usiku."
+        },
+        {
+          "en": "Many of us share one room, or the bed itself. There is no perfect answer, only the version that works in your home: sitting on the edge of the bed or a stool, a corner with a chair and a shuka set up before bed, or stepping just outside the door if it is safe.",
+          "sw": "Wengi wetu tunashiriki chumba kimoja, au kitanda chenyewe. Hakuna jibu kamili, isipokuwa lile linalofanya kazi nyumbani kwako: kukaa ukingoni mwa kitanda au kwenye kigoda, kona yenye kiti na shuka iliyowekwa tayari kabla ya kulala, au kutoka nje ya mlango kidogo ikiwa ni salama.",
+          "sheng": "Wengi wetu tunashare room moja, ama bed yenyewe. Hakuna jibu perfect, ni ile version inafanya kazi kwa home yako: kukaa edge ya bed ama kwa stool, corner na kiti na shuka imewekwa tayari kabla ya kulala, ama kutoka nje kidogo ya mlango kama iko safe."
+        }
+      ],
+      "commitment": {
+        "en": "When I cannot sleep, I will get up and go to ___.",
+        "sw": "Nikishindwa kulala, nitaamka na kwenda ___.",
+        "sheng": "Nikishindwa kulala, nitaamka na kwenda ___."
+      }
+    },
+    {
+      "id": "session3",
+      "number": 3,
+      "title": {
+        "en": "Small habits that protect your sleep",
+        "sw": "Tabia ndogo zinazolinda usingizi wako",
+        "sheng": "Small habits zinaprotect usingizi wako"
+      },
+      "points": [
+        {
+          "en": "Avoid chai, jaba, or khat for at least 6 hours before bed: caffeine stays in your body for hours. Avoid cigarettes for at least 2 hours before bed. Alcohol can help you drop off, then wake you around 3 a.m.",
+          "sw": "Epuka chai, jaba, au miraa kwa angalau masaa 6 kabla ya kulala: kafeini inabaki mwilini kwako kwa masaa mengi. Epuka sigara kwa angalau masaa 2 kabla ya kulala. Pombe inaweza kukusaidia kupata usingizi, kisha ikakuamsha karibu saa tisa usiku.",
+          "sheng": "Epuka chai, jaba, ama miraa angalau masaa 6 kabla ya kulala: caffeine inabaki mwilini kwa masaa mob. Epuka sigara angalau masaa 2 kabla ya kulala. Pombe inaweza kukusaidia u-drop off, kisha ikakuamsha around saa tisa usiku."
+        },
+        {
+          "en": "Do not go to bed hungry, stuffed, or full of liquid: a big meal fights digestion, hunger wakes you too, and too much liquid means night trips to the toilet. A small bite if you need it, or warm milk, works with sleep instead of against it.",
+          "sw": "Usiende kulala ukiwa na njaa, ukiwa umeshiba mno, au ukiwa na maji mengi tumboni: chakula kikubwa kinapigana na usagaji, njaa nayo inakuamsha, na maji mengi yanamaanisha safari za chooni usiku. Kipande kidogo ukihitaji, au maziwa ya moto, vinasaidia usingizi badala ya kuupinga.",
+          "sheng": "Usiende kulala ukiwa na njaa, umeshiba mno, ama umejaa maji tumboni: chakula kikubwa kinafight na digestion, njaa pia inakuamsha, na maji mob yanamaanisha safari za choo usiku. Kitu kidogo ukihitaji, ama maziwa ya moto, inasaidia sleep badala ya kuipinga."
+        },
+        {
+          "en": "Three old habits fight sleep: forcing sleep, since trying harder wakes you more; watching the clock, since checking the time wakes the mind, so keep the phone face down; and sleeping in or napping, since oversleep steals tonight's sleep debt.",
+          "sw": "Tabia tatu za zamani zinapigana na usingizi: kulazimisha usingizi (kujaribu zaidi kunakuamsha zaidi), kuangalia saa (kuangalia muda kunaamsha akili, weka simu chini), na kulala sana asubuhi au kulala mchana (kulala kupita kiasi kunaiba deni la usingizi la usiku ujao).",
+          "sheng": "Tabia tatu za zamani zina-fight sleep: ku-force sleep (ukijaribu zaidi unaamka zaidi), kuangalia clock (kuangalia time inaamsha akili, weka simu chini face down), na kulala sana asubuhi ama kulala mchana (oversleep inaiba ile sleep debt ya usiku unaofuata)."
+        },
+        {
+          "en": "At night, make your sleeping space dark, such as a kanga over the window and lights off early, cool rather than hot, and quiet enough, either by agreeing on quiet hours or by using rule 3. A warm wash before bed helps: as your body cools afterward, sleep comes, and warm feet help too.",
+          "sw": "Usiku, fanya sehemu yako ya kulala iwe na giza (weka kanga dirishani, zima taa mapema), iwe baridi kuliko moto, na kimya cha kutosha, ama kwa kukubaliana masaa ya kimya au kutumia kanuni ya 3. Kuoga maji ya moto kabla ya kulala kunasaidia: mwili wako unapopoa baadaye, usingizi unakuja, na miguu yenye joto pia inasaidia.",
+          "sheng": "Usiku, fanya sehemu yako ya kulala iwe na giza (weka kanga kwa window, zima taa mapema), iwe baridi kuliko moto, na quiet ya kutosha, ama kwa kukubaliana masaa ya kimya ama kutumia rule 3. Kuoga na maji ya moto kabla ya kulala inasaidia: mwili wako ukipoa baadaye, sleep inakuja, na miguu ya joto pia inasaidia."
+        },
+        {
+          "en": "In the last 30 minutes before bed, do the same wind-down every night so your body knows sleep is next: phone and screens away, nothing stressful, something calm like washing up or sitting outside or prayer, and a warm drink that is not chai.",
+          "sw": "Katika dakika 30 za mwisho kabla ya kulala, fanya kitu kimoja kila usiku ili mwili wako ujue usingizi unafuata: weka simu na skrini pembeni, epuka mambo yanayosumbua, fanya jambo tulivu kama kuosha vyombo, kukaa nje, au kusali, na kunywa kinywaji cha moto ambacho si chai.",
+          "sheng": "Kwa dakika 30 za mwisho kabla ya kulala, fanya kitu kimoja kila usiku ili mwili wako ujue sleep inafuata: weka simu na screens pembeni, epuka vitu vinavyostress, fanya kitu calm kama kuosha vyombo, kukaa nje, ama kusali, na unywe kinywaji cha moto ambacho si chai."
+        },
+        {
+          "en": "During the day, sunlight, especially in the morning, sets your body clock: bright day, sleepy night. Move your body during the day, but not in the 3 hours before bed.",
+          "sw": "Mchana, jua, hasa asubuhi, linaweka saa ya mwili wako: mchana wenye mwanga, usiku wenye usingizi. Sogeza mwili wako mchana, lakini si katika masaa 3 kabla ya kulala.",
+          "sheng": "Mchana, jua, especially asubuhi, inaset body clock yako: mchana ukiwa bright, usiku unakuwa sleepy. Move mwili wako mchana, lakini sio kwa masaa 3 kabla ya kulala."
+        }
+      ],
+      "commitment": {
+        "en": "This week I stop ___, and instead I will ___.",
+        "sw": "Wiki hii nitaacha ___, na badala yake nitafanya ___.",
+        "sheng": "Week hii nitaacha ___, na badala yake nitafanya ___."
+      }
+    },
+    {
+      "id": "session4",
+      "number": 4,
+      "title": {
+        "en": "Quiet mind, calm body",
+        "sw": "Akili tulivu, mwili tulivu",
+        "sheng": "Akili poa, mwili poa"
+      },
+      "points": [
+        {
+          "en": "Stress feeds bad sleep, and bad sleep feeds stress. Two ways to break the loop: calm the mind and calm the body.",
+          "sw": "Msongo wa mawazo unalisha usingizi mbaya, na usingizi mbaya unalisha msongo wa mawazo. Kuna njia mbili za kuvunja mzunguko huo: kutuliza akili na kutuliza mwili.",
+          "sheng": "Stress inalisha bad sleep, na bad sleep inalisha stress. Kuna njia mbili za kuvunja hiyo loop: kutuliza akili na kutuliza mwili."
+        },
+        {
+          "en": "Mind tool, worry time: give worry a time slot in the early evening, in a specific spot that is not your bed, 15 minutes with paper and pen, writing each worry down with one small step, then close the notebook. At 1 a.m. you can tell yourself: I dealt with you, your time is tomorrow.",
+          "sw": "Kifaa cha akili: muda wa kuwaza wasiwasi. Toa nafasi ya wasiwasi jioni mapema, mahali maalum ambapo si kitandani: dakika 15 na karatasi na kalamu, andika kila wasiwasi na hatua moja ndogo, kisha funga daftari. Saa saba usiku unaweza kujiambia: nimekushughulikia, wakati wako ni kesho.",
+          "sheng": "Tool ya akili: worry time. Toa nafasi ya worry jioni mapema, mahali maalum ambayo sio bedani: dakika 15 na karatasi na kalamu, andika kila worry na hatua moja ndogo, kisha funga notebook. Saa saba usiku unaweza kujiambia: nimekushughulikia, time yako ni kesho."
+        },
+        {
+          "en": "Mind tool, stop trying to sleep: the harder you try, the more awake you become, so give yourself permission not to sleep. I do not need to sleep, I just need to rest. Sleep usually arrives once the pressure is gone.",
+          "sw": "Kifaa cha akili: acha kujaribu kulala. Kadri unavyojaribu zaidi, ndivyo unavyokuwa macho zaidi, hivyo jipe ruhusa ya kutolala: sihitaji kulala, nahitaji tu kupumzika. Usingizi kwa kawaida unakuja shinikizo linapoondoka.",
+          "sheng": "Tool ya akili: acha kutry kulala. Kadri unavyotry zaidi, ndivyo unavyoamka zaidi, kwa hivyo jipe ruhusa ya kutolala: sihitaji kulala, nahitaji tu kupumzika. Sleep kawaida inakuja pressure ikiondoka."
+        },
+        {
+          "en": "Three things people believe are not true: everyone needs 8 hours, since rested is the goal, not a number; a bad night means stay in bed longer, since that reopens the gap; and checking how you slept helps, since watching makes it louder and letting go and breathing works better.",
+          "sw": "Mambo matatu si kweli: kila mtu anahitaji masaa 8 (lengo ni kupumzika, si nambari fulani), usiku mbaya unamaanisha kukaa kitandani zaidi (hilo linafungua pengo tena), na kuangalia jinsi ulivyolala kunasaidia (kuangalia kunafanya iwe mbaya zaidi; achilia na pumua badala yake).",
+          "sheng": "Vitu tatu si kweli: kila mtu anahitaji masaa 8 (goal ni kupumzika, sio namba fulani), bad night inamaanisha ukae bedani zaidi (hiyo inafungua gap tena), na kuangalia jinsi ulilala inasaidia (kuangalia inafanya iwe noma zaidi; acha na breathe badala yake)."
+        },
+        {
+          "en": "Three body techniques calm the alarm system and are fine to use in bed: slow breathing, in through the nose to a count of 4 and out through the mouth to a count of 6; a peaceful place in your mind that you picture in detail; and squeeze and release, one body part at a time, squeezing 5 seconds and releasing for 10.",
+          "sw": "Mbinu tatu za mwili zinatuliza mfumo wa tahadhari na ni sawa kuzitumia kitandani: kupumua taratibu (vuta hewa puani ukihesabu hadi 4, toa hewa mdomoni ukihesabu hadi 6), mahali patulivu akilini unapopafikiria kwa undani, na kubana na kuachilia, sehemu moja ya mwili kwa wakati mmoja, ukibana kwa sekunde 5 na kuachilia kwa sekunde 10.",
+          "sheng": "Mbinu tatu za mwili zinatuliza alarm system na ni sawa kuzitumia bedani: slow breathing (vuta hewa puani ukicount hadi 4, toa hewa mdomoni ukicount hadi 6), peaceful place akilini unapopicture kwa undani, na kubana na kuachilia, sehemu moja ya mwili kwa wakati mmoja, ukibana sekunde 5 na kuachilia sekunde 10."
+        },
+        {
+          "en": "After the program, keep some rules forever, such as the same wake time, bed only for sleep, getting up after 20 minutes awake, and no naps. Relax others slowly: your window and your caffeine cutoff, where two good weeks earns 15 more minutes. If sleep slips for 3 bad nights, go back to your tighter window and rebuild before growing again.",
+          "sw": "Baada ya programu, endelea na kanuni fulani milele (muda ule ule wa kuamka, kitanda kwa ajili ya kulala tu, amka baada ya dakika 20 ukiwa macho, bila kulala mchana), legeza zingine polepole (dirisha lako, muda wako wa mwisho wa kafeini, wiki mbili nzuri zinakupa dakika 15 zaidi), na usingizi ukiharibika kwa usiku tatu mbaya, rudi kwenye dirisha lako fupi zaidi na ujenge upya kabla ya kukua tena.",
+          "sheng": "Baada ya program, endelea na rules zingine milele (wake time ile ile, bed ni ya kulala tu, toka baada ya dakika 20 ukiwa umeamka, hakuna kulala mchana), legeza zingine pole pole (window yako, caffeine cutoff yako, weeks mbili nzuri zinakupea dakika 15 zaidi), na sleep ikiharibika kwa usiku tatu mbaya, rudi kwa window yako fupi zaidi na ujenge upya kabla ya kukua tena."
+        }
+      ],
+      "commitment": {
+        "en": "The ONE rule I will keep is ___. My warning sign is ___.",
+        "sw": "Kanuni MOJA nitakayoendelea nayo ni ___. Ishara yangu ya tahadhari ni ___.",
+        "sheng": "Rule MOJA nitakayoendelea nayo ni ___. Warning sign yangu ni ___."
+      }
+    }
+  ]
+}

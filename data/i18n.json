@@ -1,0 +1,215 @@
+{
+  "_readme": "UI chrome, onboarding, and safety-gate copy in English, Kiswahili, and Sheng. The safety.selfHarm and safety.apnea blocks are the most sensitive content in this app: contact placeholders are deliberately left as bracketed TODOs rather than a guessed phone number, because a wrong crisis-line number here is worse than an obvious placeholder. See README.md before this is shown to anyone outside the team.",
+  "languages": [
+    { "code": "en", "label": "English" },
+    { "code": "sw", "label": "Kiswahili" },
+    { "code": "sheng", "label": "Sheng" }
+  ],
+  "nav": {
+    "home": { "en": "Home", "sw": "Nyumbani", "sheng": "Home" },
+    "diary": { "en": "Diary", "sw": "Shajara", "sheng": "Diary" },
+    "window": { "en": "My Window", "sw": "Dirisha Langu", "sheng": "Window Yangu" },
+    "sessions": { "en": "Sessions", "sw": "Vikao", "sheng": "Sessions" },
+    "ask": { "en": "Ask", "sw": "Uliza", "sheng": "Uliza" },
+    "settings": { "en": "Settings", "sw": "Mipangilio", "sheng": "Settings" }
+  },
+  "landing": {
+    "appName": {
+      "en": "Better Sleep Companion",
+      "sw": "Msaidizi wa Usingizi Bora",
+      "sheng": "Better Sleep Companion"
+    },
+    "tagline": {
+      "en": "A research demonstration for the Better Sleep Study",
+      "sw": "Onyesho la utafiti kwa ajili ya Better Sleep Study",
+      "sheng": "Research demo ya Better Sleep Study"
+    },
+    "whatThisIsTitle": {
+      "en": "What this is",
+      "sw": "Hii ni nini",
+      "sheng": "Hii ni nini"
+    },
+    "whatThisIsBody": {
+      "en": "This is a research demonstration, not a medical device. It shows how a future companion app would compute a sleep-restriction window from your own diary, using a fixed rule, not a guess. Nothing here is sent anywhere: everything stays on this device. The deployed version, built with the Busara Center for Behavioral Economics, is what the grant behind this demo would fund.",
+      "sw": "Hii ni onyesho la utafiti, si kifaa cha matibabu. Inaonyesha jinsi programu ya baadaye ingehesabu dirisha la kupunguza usingizi kutoka kwa shajara yako mwenyewe, kwa kutumia kanuni thabiti, si kubahatisha. Hakuna kinachotumwa popote hapa: kila kitu kinabaki kwenye kifaa hiki. Toleo litakalotumika, lililojengwa pamoja na Busara Center for Behavioral Economics, ndilo ambalo ruzuku nyuma ya onyesho hili ingefadhili.",
+      "sheng": "Hii ni research demo, sio kifaa cha matibabu. Inaonyesha jinsi app ya baadaye ingecalculate window ya kupunguza sleep kutoka diary yako mwenyewe, ikitumia rule fixed, sio kubahatisha. Hakuna kitu kinatumwa popote hapa: kila kitu kinabaki kwa kifaa hiki. Toleo litakalotumika, lililojengwa pamoja na Busara Center for Behavioral Economics, ndio ambayo grant nyuma ya demo hii ingefund."
+    },
+    "startButton": {
+      "en": "Start the demo",
+      "sw": "Anza onyesho",
+      "sheng": "Anza demo"
+    },
+    "offlineNote": {
+      "en": "Works with no internet after your first visit. Try turning off your connection and reloading.",
+      "sw": "Inafanya kazi bila intaneti baada ya ziara yako ya kwanza. Jaribu kuzima muunganisho wako kisha upakie upya.",
+      "sheng": "Inafanya kazi bila internet baada ya visit yako ya kwanza. Try kuzima connection yako kisha ureload."
+    }
+  },
+  "onboarding": {
+    "title": {
+      "en": "Before we start",
+      "sw": "Kabla hatujaanza",
+      "sheng": "Kabla hatujaanza"
+    },
+    "screenerIntro": {
+      "en": "Two quick questions, for your safety. Your answers stay on this device.",
+      "sw": "Maswali mawili ya haraka, kwa usalama wako. Majibu yako yanabaki kwenye kifaa hiki.",
+      "sheng": "Maswali mbili haraka, kwa usalama wako. Majibu yako yanabaki kwa kifaa hiki."
+    },
+    "screenerApnea": {
+      "en": "Does anyone tell you that you snore loudly and seem to stop breathing for a moment while you sleep?",
+      "sw": "Je, kuna mtu anakuambia unakoroma sana na unaonekana kuacha kupumua kwa muda ukiwa umelala?",
+      "sheng": "Je, kuna mtu anakuambia unasnore sana na unaonekana kuacha kupumua kwa muda ukiwa umelala?"
+    },
+    "screenerSelfHarm": {
+      "en": "In the past two weeks, have you had thoughts of hurting yourself, or that life is not worth living?",
+      "sw": "Katika wiki mbili zilizopita, umewahi kuwa na mawazo ya kujidhuru, au kwamba maisha hayana thamani?",
+      "sheng": "Kwa wiki mbili zilizopita, umewahi kuwa na mawazo ya kujiumiza, ama kwamba maisha hayana thamani?"
+    },
+    "yes": { "en": "Yes", "sw": "Ndiyo", "sheng": "Ndiyo" },
+    "no": { "en": "No", "sw": "Hapana", "sheng": "Hapana" },
+    "wakeTimeLabel": {
+      "en": "Choose the wake-up time you can keep every day, including weekends",
+      "sw": "Chagua muda wa kuamka unaoweza kudumisha kila siku, hata wikendi",
+      "sheng": "Chagua wake time unayoweza kudumisha kila siku, hata weekend"
+    },
+    "continueButton": { "en": "Continue", "sw": "Endelea", "sheng": "Endelea" }
+  },
+  "diary": {
+    "title": { "en": "Sleep diary", "sw": "Shajara ya usingizi", "sheng": "Diary ya sleep" },
+    "nightLabel": { "en": "Night", "sw": "Usiku", "sheng": "Night" },
+    "source": {
+      "en": "Same 8 questions as the paper diary used in the pilot.",
+      "sw": "Maswali 8 sawa na shajara ya karatasi iliyotumika kwenye jaribio.",
+      "sheng": "Maswali 8 sawa na diary ya karatasi iliyotumika kwa pilot."
+    },
+    "napMin": { "en": "How long did you nap yesterday? (0 if no naps, minutes)", "sw": "Ulilala mchana kwa muda gani jana? (0 kama hukulala, dakika)", "sheng": "Ulilala mchana kwa muda gani jana? (0 kama hukulala, dakika)" },
+    "bedTime": { "en": "What time did you get into bed last night?", "sw": "Uliingia kitandani saa ngapi jana usiku?", "sheng": "Uliingia bedani saa ngapi jana usiku?" },
+    "sleepTryTime": { "en": "What time did you close your eyes intending to sleep?", "sw": "Ulifumba macho saa ngapi ukiwa na nia ya kulala?", "sheng": "Ulifumba macho saa ngapi ukiwa na nia ya kulala?" },
+    "solMin": { "en": "How long did it take you to fall asleep? (minutes)", "sw": "Ilichukua muda gani kupata usingizi? (dakika)", "sheng": "Ilichukua muda gani kupata sleep? (dakika)" },
+    "wasoMin": { "en": "How long were you awake in the middle of the night? (minutes)", "sw": "Ulikuwa macho kwa muda gani katikati ya usiku? (dakika)", "sheng": "Ulikuwa umeamka kwa muda gani katikati ya usiku? (dakika)" },
+    "wakeTime": { "en": "What time did you wake up for the last time this morning?", "sw": "Uliamka saa ngapi kwa mara ya mwisho asubuhi hii?", "sheng": "Uliamka saa ngapi kwa mara ya mwisho asubuhi hii?" },
+    "outOfBedTime": { "en": "What time did you get out of bed this morning?", "sw": "Ulitoka kitandani saa ngapi asubuhi hii?", "sheng": "Ulitoka bedani saa ngapi asubuhi hii?" },
+    "interferenceTitle": { "en": "Did any of these interfere with your sleep last night?", "sw": "Je, kuna lolote kati ya haya lililoathiri usingizi wako jana usiku?", "sheng": "Je, kuna lolote kati ya hizi lilikuinterfere sleep yako jana usiku?" },
+    "interferenceTemperature": { "en": "Temperature: too hot or too cold", "sw": "Joto: moto sana au baridi sana", "sheng": "Joto: moto sana ama baridi sana" },
+    "interferenceNoise": { "en": "Noise: from outside or from other people in the house", "sw": "Kelele: kutoka nje au kutoka kwa watu wengine nyumbani", "sheng": "Noise: kutoka nje ama kutoka kwa watu wengine nyumbani" },
+    "interferenceLight": { "en": "Light: from outside or inside", "sw": "Mwanga: kutoka nje au ndani", "sheng": "Mwanga: kutoka nje ama ndani" },
+    "interferenceWorrySleep": { "en": "Worrying about not sleeping", "sw": "Kuwa na wasiwasi wa kutolala", "sheng": "Kuworry kuhusu kutolala" },
+    "interferenceWorryWork": { "en": "Worrying about work and work-related things", "sw": "Kuwa na wasiwasi kuhusu kazi na mambo yanayohusiana na kazi", "sheng": "Kuworry kuhusu kazi na mambo za job" },
+    "interferenceWorryFamily": { "en": "Worrying about family and family-related things", "sw": "Kuwa na wasiwasi kuhusu familia na mambo yanayohusiana na familia", "sheng": "Kuworry kuhusu family na mambo za nyumbani" },
+    "sleepinessTitle": { "en": "How sleepy did you feel during the day yesterday?", "sw": "Ulisinzia kiasi gani mchana jana?", "sheng": "Ulisinzia kiasi gani mchana jana?" },
+    "sleepinessNone": { "en": "Not sleepy", "sw": "Sikusinzia", "sheng": "Sikusinzia" },
+    "sleepinessMild": { "en": "A little sleepy", "sw": "Nilisinzia kidogo", "sheng": "Nilisinzia kidogo" },
+    "sleepinessHigh": { "en": "Very sleepy", "sw": "Nilisinzia sana", "sheng": "Nilisinzia sana" },
+    "sleepinessDangerous": { "en": "So sleepy I nearly dozed off during something like walking, working with tools, or crossing the road", "sw": "Nilisinzia sana hadi karibu kulala nikiwa kwenye kitu kama kutembea, kutumia zana, au kuvuka barabara", "sheng": "Nilisinzia sana mpaka nikaribia kulala nikiwa kwenye kitu kama kutembea, kutumia tools, ama kuvuka barabara" },
+    "saveButton": { "en": "Save last night", "sw": "Hifadhi jana usiku", "sheng": "Save jana usiku" },
+    "savedNote": { "en": "Saved. Your window will update below.", "sw": "Imehifadhiwa. Dirisha lako litabadilika hapa chini.", "sheng": "Imesave. Window yako itabadilika hapa chini." },
+    "incompleteNote": { "en": "Please fill every question; this is what keeps the calculation honest.", "sw": "Tafadhali jaza kila swali; hii ndiyo inayoweka hesabu kuwa sahihi.", "sheng": "Tafadhali jaza kila swali; hii ndio inaweka calculation iwe sahihi." },
+    "implausibleNote": { "en": "These times do not add up (check them against each other). This night was excluded from your weekly average, the same way the study team handles diary entries that cannot be correct.", "sw": "Nyakati hizi hazilingani (zikague dhidi ya nyingine). Usiku huu umeondolewa kwenye wastani wako wa wiki, kama timu ya utafiti inavyoshughulikia maingizo ya shajara yasiyowezekana kuwa sahihi.", "sheng": "Hizi times hazilingani (zicheki dhidi ya zingine). Usiku huu umeondolewa kwa average yako ya week, sawa na vile study team inashughulikia diary entries ambazo haziwezi kuwa sahihi." }
+  },
+  "window": {
+    "title": { "en": "Your sleep window", "sw": "Dirisha lako la kulala", "sheng": "Window yako ya kulala" },
+    "needMoreData": {
+      "en": "Log at least 3 nights of diary data to see your first window. The real program waits for 5 nights in a rolling week before adjusting it further.",
+      "sw": "Weka angalau usiku 3 za data ya shajara ili kuona dirisha lako la kwanza. Programu halisi inasubiri usiku 5 kwenye wiki inayozunguka kabla ya kulirekebisha zaidi.",
+      "sheng": "Log angalau nights 3 za diary data ili kuona window yako ya kwanza. Program halisi inasubiri nights 5 kwa rolling week kabla ya kuiadjust zaidi."
+    },
+    "bedtimeLabel": { "en": "Go to bed no earlier than", "sw": "Usiende kulala mapema kuliko", "sheng": "Usiende kulala mapema kuliko" },
+    "waketimeLabel": { "en": "Wake up at", "sw": "Amka saa", "sheng": "Amka saa" },
+    "windowLabel": { "en": "Window length", "sw": "Urefu wa dirisha", "sheng": "Urefu wa window" },
+    "reasoningTitle": { "en": "Why this window", "sw": "Kwa nini dirisha hili", "sheng": "Kwa nini window hii" },
+    "baselineNote": {
+      "en": "This is your first window: the average sleep you actually got over your first {n} nights, rounded to the nearest 15 minutes. Your facilitator will adjust it weekly from here.",
+      "sw": "Hili ni dirisha lako la kwanza: wastani wa usingizi uliopata kweli katika usiku {n} za kwanza, ukizungushwa hadi dakika 15 za karibu. Mwezeshaji wako atalirekebisha kila wiki kuanzia hapa.",
+      "sheng": "Hii ni window yako ya kwanza: average ya sleep uliopata kweli kwa nights {n} za kwanza, iliyozungushwa hadi dakika 15 za karibu. Facilitator wako ataiadjust kila week kuanzia hapa."
+    },
+    "meanSELabel": { "en": "Average sleep efficiency over the last {n} valid nights", "sw": "Wastani wa ufanisi wa usingizi kwa usiku {n} halali za mwisho", "sheng": "Average sleep efficiency kwa nights {n} valid za mwisho" },
+    "actionExtend": { "en": "This is at or above 85%, so your window grows by 15 minutes.", "sw": "Hii iko sawa au juu ya 85%, hivyo dirisha lako linaongezeka kwa dakika 15.", "sheng": "Hii iko sawa ama juu ya 85%, kwa hivyo window yako inaongezeka na dakika 15." },
+    "actionHold": { "en": "This is between 80% and 85%, so your window holds steady.", "sw": "Hii iko kati ya 80% na 85%, hivyo dirisha lako linabaki sawa.", "sheng": "Hii iko kati ya 80% na 85%, kwa hivyo window yako inabaki vile ilivyo." },
+    "actionReduce": { "en": "This is below 80%, so your window shrinks by 15 minutes.", "sw": "Hii iko chini ya 80%, hivyo dirisha lako linapungua kwa dakika 15.", "sheng": "Hii iko chini ya 80%, kwa hivyo window yako inapungua na dakika 15." },
+    "clampedNote": { "en": "The rule would have gone shorter, but this program never prescribes less than 5 hours.", "sw": "Kanuni ingelipunguza zaidi, lakini programu hii kamwe haitoi maagizo ya chini ya masaa 5.", "sheng": "Rule ingepunguza zaidi, lakini program hii haitoi chini ya masaa 5, kamwe." },
+    "sourceNote": {
+      "en": "Rule: mean sleep efficiency over the last 7 nights (minimum 5 nights with data). 85% or higher extends the window 15 minutes; 80 to 85% holds; below 80% reduces it 15 minutes. Never below 5 hours. Source: session2_slides.tex.",
+      "sw": "Kanuni: wastani wa ufanisi wa usingizi kwa usiku 7 za mwisho (angalau usiku 5 zenye data). 85% au zaidi inaongeza dirisha kwa dakika 15; 80 hadi 85% inabaki sawa; chini ya 80% inapunguza kwa dakika 15. Kamwe si chini ya masaa 5. Chanzo: session2_slides.tex.",
+      "sheng": "Rule: average sleep efficiency kwa nights 7 za mwisho (angalau nights 5 zenye data). 85% ama zaidi inaongeza window na dakika 15; 80 hadi 85% inabaki vile ilivyo; chini ya 80% inapunguza na dakika 15. Haiwezi kuwa chini ya masaa 5, kamwe. Chanzo: session2_slides.tex."
+    }
+  },
+  "safety": {
+    "selfHarm": {
+      "title": { "en": "Please stop here and reach out", "sw": "Tafadhali simama hapa na uwasiliane na mtu", "sheng": "Simama hapa kwanza uongee na mtu" },
+      "body": {
+        "en": "You shared something serious just now. This app cannot help with thoughts of hurting yourself, and will not try. Please talk to a real person today: [STUDY TEAM CONTACT — to be filled in before real use] or [LOCAL CRISIS LINE — to be filled in before real use]. If you are in danger right now, go to the nearest health facility. You matter, and this feeling can change with the right support.",
+        "sw": "Umeshiriki kitu kizito sasa hivi. Programu hii haiwezi kusaidia na mawazo ya kujidhuru, na haitajaribu. Tafadhali zungumza na mtu halisi leo: [MAWASILIANO YA TIMU YA UTAFITI — yataongezwa kabla ya matumizi halisi], au [NAMBA YA DHARURA YA KIENYEJI — itaongezwa kabla ya matumizi halisi]. Ukiwa katika hatari sasa hivi, nenda kituo cha afya kilicho karibu. Wewe ni muhimu, na hisia hii inaweza kubadilika kwa msaada sahihi.",
+        "sheng": "Umeshare kitu serious sasa hivi. App hii haiwezi kusaidia na mawazo ya kujiumiza, na haitatry. Tafadhali ongea na mtu halisi leo: [CONTACT YA STUDY TEAM — itaongezwa kabla ya matumizi halisi], ama [CRISIS LINE YA HAPA — itaongezwa kabla ya matumizi halisi]. Ukiwa kwa hatari sasa hivi, enda kwa health facility iko karibu. Wewe ni muhimu, na hii feeling inaweza kubadilika ukipata msaada sahihi."
+      },
+      "button": { "en": "I have read this", "sw": "Nimesoma hili", "sheng": "Nimesoma hii" }
+    },
+    "apnea": {
+      "title": { "en": "This needs a different kind of care", "sw": "Hii inahitaji aina tofauti ya matunzo", "sheng": "Hii inahitaji aina tofauti ya care" },
+      "body": {
+        "en": "Loud snoring together with pauses in breathing during sleep can be a sign of a condition this program does not treat, called sleep apnea. This app will stop giving sleep-window advice until this has been checked by a clinician. Please tell your study facilitator so they can arrange a referral.",
+        "sw": "Kukoroma sana pamoja na kusimama kwa kupumua wakati wa kulala kunaweza kuwa ishara ya hali ambayo programu hii haitibu, inayoitwa apnea ya usingizi. Programu hii itasimamisha ushauri wa dirisha la kulala hadi hali hii ichunguzwe na daktari. Tafadhali mwambie mwezeshaji wako wa utafiti ili apange rufaa.",
+        "sheng": "Ku-snore sana pamoja na kusimama kwa breathing wakati wa kulala inaweza kuwa ishara ya condition ambayo program hii haitreat, inaitwa sleep apnea. App hii itasimamisha advice ya sleep window mpaka hii ichekiwe na daktari. Tafadhali mwambie facilitator wako wa study ili apange referral."
+      },
+      "button": { "en": "I understand", "sw": "Nimeelewa", "sheng": "Nimeelewa" }
+    },
+    "sleepinessUrgent": {
+      "title": { "en": "Please be careful today", "sw": "Tafadhali kuwa mwangalifu leo", "sheng": "Kuwa careful leo" },
+      "body": {
+        "en": "You reported being dangerously sleepy, close to falling asleep during an activity where that would be unsafe. Do not drive, operate machinery, or do anything else where dozing off could hurt you or someone else, until you have had proper rest. This can happen in the early days of a shorter window and should ease, but your safety matters more than the schedule right now.",
+        "sw": "Uliripoti kusinzia kwa hatari, karibu kulala wakati wa shughuli ambapo hilo lingekuwa hatari. Usiendeshe gari, wala kutumia mashine, wala kufanya lolote lingine ambapo kusinzia kunaweza kukudhuru wewe au mtu mwingine, hadi upate mapumziko ya kutosha. Hili linaweza kutokea siku za mwanzo za dirisha fupi na linapaswa kupungua, lakini usalama wako ni muhimu zaidi kuliko ratiba sasa hivi.",
+        "sheng": "Ulireport kusinzia kwa hatari, karibu kulala wakati wa activity ambayo hiyo ingekuwa hatari. Usidrive, wala kutumia machine, wala kufanya kitu kingine chochote ambapo kusinzia kunaweza kukudhuru wewe ama mtu mwingine, mpaka upate rest ya kutosha. Hii inaweza kuhappen siku za kwanza za window fupi na inapaswa kupungua, lakini usalama wako ni muhimu zaidi kuliko schedule sasa hivi."
+      },
+      "button": { "en": "I understand", "sw": "Nimeelewa", "sheng": "Nimeelewa" }
+    },
+    "sleepinessSustained": {
+      "title": { "en": "Your body may need more rest than the plan allows right now", "sw": "Huenda mwili wako unahitaji mapumziko zaidi kuliko mpango unaruhusu sasa hivi", "sheng": "Huenda mwili wako inahitaji rest zaidi kuliko mpango inaruhusu sasa hivi" },
+      "body": {
+        "en": "You have reported feeling very sleepy on several days this week. This can be part of building sleep debt on purpose, but it can also mean the window needs a closer look sooner than the next session. Please mention this to your facilitator, and in the meantime avoid driving or machinery whenever you feel this sleepy.",
+        "sw": "Umeripoti kusinzia sana kwa siku kadhaa wiki hii. Hili linaweza kuwa sehemu ya kujenga deni la usingizi kwa makusudi, lakini pia linaweza kumaanisha dirisha linahitaji kuangaliwa kwa karibu mapema kuliko kikao kijacho. Tafadhali mwambie mwezeshaji wako, na wakati huo huo epuka kuendesha gari au mashine wakati wowote unaposinzia hivi.",
+        "sheng": "Umereport kusinzia sana kwa siku kadhaa week hii. Hii inaweza kuwa part ya kubuild sleep debt on purpose, lakini pia inaweza kumaanisha window inahitaji kuangaliwa karibu mapema kuliko session inayofuata. Tafadhali mwambie facilitator wako, na wakati huo huo epuka kudrive ama machine wakati wowote unaposinzia hivi."
+      },
+      "button": { "en": "I understand", "sw": "Nimeelewa", "sheng": "Nimeelewa" }
+    },
+    "windowFloor": {
+      "title": { "en": "This is as short as this program allows", "sw": "Hii ndio kifupi zaidi programu hii inaruhusu", "sheng": "Hii ndio short zaidi ambayo program hii inaruhusu" },
+      "body": {
+        "en": "Your calculated window has reached the shortest this program permits, five hours. The window will not be shortened further. Please speak to your study facilitator before your next session so they can review your diary with you in person.",
+        "sw": "Dirisha lako lililokokotolewa limefikia kifupi zaidi ambacho programu hii inaruhusu, masaa matano. Dirisha halitapunguzwa zaidi. Tafadhali ongea na mwezeshaji wako wa utafiti kabla ya kikao chako kijacho ili apitie shajara yako nawe ana kwa ana.",
+        "sheng": "Window yako iliyocalculatiwa imefika short zaidi ambayo program hii inaruhusu, masaa matano. Window haitapunguzwa zaidi. Tafadhali ongea na facilitator wako wa study kabla ya session yako inayofuata ili apitie diary yako nawe face to face."
+      },
+      "button": { "en": "I understand", "sw": "Nimeelewa", "sheng": "Nimeelewa" }
+    }
+  },
+  "ask": {
+    "title": { "en": "Ask about a sleep problem", "sw": "Uliza kuhusu tatizo la usingizi", "sheng": "Uliza kuhusu tatizo la sleep" },
+    "subtitle": {
+      "en": "Tap what happened. Answers use your own diary, not a guess, and never leave this device.",
+      "sw": "Gusa kilichotokea. Majibu yanatumia shajara yako mwenyewe, si kubahatisha, na hayatoki kwenye kifaa hiki.",
+      "sheng": "Gusa kilichohappen. Answers zinatumia diary yako mwenyewe, sio kubahatisha, na haziwahi kutoka kwa kifaa hiki."
+    },
+    "modeALabel": { "en": "Scripted troubleshooter (offline, always available)", "sw": "Msaidizi wa maswali uliopangwa (nje ya mtandao, upo daima)", "sheng": "Scripted troubleshooter (offline, iko daima)" },
+    "modeBLabel": { "en": "Free-text question (needs your own API key)", "sw": "Swali la kuandika mwenyewe (linahitaji ufunguo wako wa API)", "sheng": "Swali la kuandika mwenyewe (linahitaji API key yako)" }
+  },
+  "settings": {
+    "title": { "en": "Settings", "sw": "Mipangilio", "sheng": "Settings" },
+    "languageLabel": { "en": "Language", "sw": "Lugha", "sheng": "Lugha" },
+    "byokTitle": { "en": "Optional: bring your own key", "sw": "Hiari: leta ufunguo wako mwenyewe", "sheng": "Hiari: leta key yako mwenyewe" },
+    "byokBody": {
+      "en": "This is a demo affordance for reviewers only, not part of the real product. Pasting a key here lets the Ask screen answer free-text questions using a generative model instead of the scripted library. Your key is stored only in this browser and is sent directly from your device to the model provider; it never touches any server we control.",
+      "sw": "Hii ni njia ya onyesho kwa wakaguzi tu, si sehemu ya bidhaa halisi. Kubandika ufunguo hapa kunaruhusu skrini ya Uliza kujibu maswali ya kuandika mwenyewe kwa kutumia modeli ya kutengeneza badala ya maktaba iliyopangwa. Ufunguo wako unahifadhiwa tu kwenye kivinjari hiki na unatumwa moja kwa moja kutoka kifaa chako hadi mtoa huduma wa modeli; hauguzi seva yoyote tunayodhibiti.",
+      "sheng": "Hii ni demo affordance kwa reviewers tu, sio part ya product halisi. Ku-paste key hapa inaruhusu Ask screen kujibu free-text questions ikitumia generative model badala ya scripted library. Key yako inahifadhiwa tu kwa browser hii na inatumwa moja kwa moja kutoka kifaa chako mpaka model provider; haiguzi server yoyote tunayodhibiti."
+    },
+    "byokKeyLabel": { "en": "API key (kept in this browser only)", "sw": "Ufunguo wa API (unabaki kwenye kivinjari hiki tu)", "sheng": "API key (inabaki kwa browser hii tu)" },
+    "byokSave": { "en": "Save key", "sw": "Hifadhi ufunguo", "sheng": "Save key" },
+    "byokClear": { "en": "Clear key", "sw": "Futa ufunguo", "sheng": "Futa key" },
+    "resetTitle": { "en": "Reset demo data", "sw": "Rudisha data ya onyesho", "sheng": "Reset data ya demo" },
+    "resetBody": { "en": "Deletes everything you entered on this device: diary nights, your window, and the safety screener answers.", "sw": "Inafuta kila kitu ulichoingiza kwenye kifaa hiki: usiku za shajara, dirisha lako, na majibu ya uchunguzi wa usalama.", "sheng": "Inafuta kila kitu uliingiza kwa kifaa hiki: diary nights, window yako, na majibu ya safety screener." },
+    "resetButton": { "en": "Delete everything", "sw": "Futa kila kitu", "sheng": "Futa kila kitu" },
+    "resetConfirm": { "en": "This cannot be undone. Delete everything?", "sw": "Hili haliwezi kutenguliwa. Futa kila kitu?", "sheng": "Hii haiwezi kutenguliwa. Futa kila kitu?" }
+  },
+  "common": {
+    "cancel": { "en": "Cancel", "sw": "Ghairi", "sheng": "Cancel" },
+    "back": { "en": "Back", "sw": "Rudi", "sheng": "Rudi" }
+  }
+}

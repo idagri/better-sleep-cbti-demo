@@ -1,0 +1,194 @@
+{
+  "_readme": "Deterministic scripted troubleshooter. Each topic is a fixed prompt the user taps (no free-text parsing, so nothing here can hallucinate). branches are evaluated in order; the first whose conditions all match against the computed diary-state flags is shown; otherwise fallback is shown. conditions reference flags computed in js/troubleshooter.js from the last valid diary night, never raw free text. Two topics route straight to the safety gate instead of returning a branch response: see routesToSafety. This library doubles as the seed seat for the Level 1 golden dataset the DIV application budgets for (structured input-state to known-correct-output pairs).",
+  "flags": {
+    "elevatedSOL": "last valid night's solMin >= 30",
+    "highWASO": "last valid night's wasoMin >= 30",
+    "nappedYesterday": "last valid night's napMin > 0",
+    "flagTemperature": "last valid night's interference.temperature is true",
+    "flagNoise": "last valid night's interference.noise is true",
+    "flagLight": "last valid night's interference.light is true",
+    "flagWorrySleep": "last valid night's interference.worrySleep is true",
+    "flagWorryWork": "last valid night's interference.worryWork is true",
+    "flagWorryFamily": "last valid night's interference.worryFamily is true",
+    "sleepinessHighOrDangerous": "last valid night's sleepiness is 'high' or 'dangerous'"
+  },
+  "topics": [
+    {
+      "id": "cant_fall_asleep",
+      "prompt": {
+        "en": "I could not fall asleep",
+        "sw": "Sikuweza kupata usingizi",
+        "sheng": "Sikuweza ku-fall asleep"
+      },
+      "branches": [
+        {
+          "id": "cant_fall_asleep_worry",
+          "when": [
+            { "flag": "elevatedSOL", "equals": true },
+            { "flag": "anyWorryFlag", "equals": true }
+          ],
+          "response": {
+            "en": "Your diary shows it took a long time to fall asleep, and you marked worry as part of what interfered. Try moving your worry time earlier in the evening: 15 minutes with paper and pen, in a spot that is not your bed, writing down each worry and one small step. Tonight, if a worry returns in bed, you can tell yourself you already dealt with it, and its time is tomorrow. If you are still awake after about 20 minutes, get up, per rule 3, and come back only when sleepy.",
+            "sw": "Shajara yako inaonyesha ilichukua muda mrefu kupata usingizi, na uliweka alama kuwa wasiwasi ulikuwa sehemu ya kilichokusumbua. Jaribu kuhamisha muda wako wa kuwaza wasiwasi mapema jioni: dakika 15 na karatasi na kalamu, mahali ambapo si kitandani, ukiandika kila wasiwasi na hatua moja ndogo. Usiku huu, wasiwasi ukirudi ukiwa kitandani, unaweza kujiambia umeshaushughulikia, na wakati wake ni kesho. Ukiwa bado macho baada ya dakika 20 hivi, amka, kulingana na kanuni ya 3, na urudi tu ukiwa umesinzia.",
+            "sheng": "Diary yako inaonyesha ilichukua muda mrefu kupata sleep, na ulimark worry kama part ya kilichokusumbua. Try kuhamisha worry time yako mapema jioni: dakika 15 na karatasi na kalamu, mahali ambayo sio bedani, ukiandika kila worry na hatua moja ndogo. Usiku huu, worry ikirudi ukiwa bedani, unaweza kujiambia umeshaishughulikia, na time yake ni kesho. Ukiwa bado umeamka baada ya dakika 20, toka, kulingana na rule 3, na urudi tu ukiwa umesinzia."
+          }
+        },
+        {
+          "id": "cant_fall_asleep_elevated_sol",
+          "when": [{ "flag": "elevatedSOL", "equals": true }],
+          "response": {
+            "en": "Your diary shows it took longer than usual to fall asleep. That happens, especially in the first weeks: the plan is working even when a single night is hard. If you are lying awake for about 20 minutes, get up per rule 3, keep the light dim, do something boring, and go back only when sleepy. Keep your wake-up alarm exactly the same tomorrow, no matter how tonight goes.",
+            "sw": "Shajara yako inaonyesha ilichukua muda zaidi ya kawaida kupata usingizi. Hilo hutokea, hasa wiki za mwanzo: mpango unafanya kazi hata kama usiku mmoja ni mgumu. Ukiwa macho kwa dakika 20 hivi, amka kulingana na kanuni ya 3, weka mwanga hafifu, fanya jambo la kuchosha, na urudi tu ukiwa umesinzia. Weka kengele yako ya kuamka sawasawa kesho, haijalishi usiku huu ulikuwaje.",
+            "sheng": "Diary yako inaonyesha ilichukua muda zaidi ya kawaida kupata sleep. Hiyo inahappen, especially weeks za kwanza: mpango unafanya kazi hata kama usiku mmoja ni ngumu. Ukiwa umeamka kwa dakika 20, toka kulingana na rule 3, weka mwanga mdogo, fanya kitu boring, na urudi tu ukiwa umesinzia. Weka alarm yako ya kuamka sawa sawa kesho, haijalishi usiku huu ulikuwa aje."
+          }
+        }
+      ],
+      "fallback": {
+        "en": "Falling asleep quickly some nights and slowly on others is normal, especially while your body adjusts to the new window. Stick with your two alarms and your diary, and bring this up with your facilitator at the next session.",
+        "sw": "Kupata usingizi haraka baadhi ya usiku na polepole siku zingine ni jambo la kawaida, hasa wakati mwili wako unazoea dirisha jipya. Endelea na kengele zako mbili na shajara yako, na uliza mwezeshaji wako kwenye kikao kijacho.",
+        "sheng": "Kupata sleep haraka baadhi ya nights na polepole siku zingine ni kitu ya kawaida, especially wakati mwili wako unazoea window mpya. Endelea na alarm zako mbili na diary yako, na uulize facilitator wako next session."
+      }
+    },
+    {
+      "id": "woke_in_night",
+      "prompt": {
+        "en": "I woke up in the night and could not fall back asleep",
+        "sw": "Niliamka usiku na sikuweza kurudi kulala",
+        "sheng": "Niliamka usiku sikuweza kurudi kulala"
+      },
+      "branches": [
+        {
+          "id": "woke_in_night_environment",
+          "when": [
+            { "flag": "highWASO", "equals": true },
+            { "flag": "anyEnvironmentFlag", "equals": true }
+          ],
+          "response": {
+            "en": "Your diary shows a lot of time awake in the night, and you marked your sleeping space as part of what interfered. Session 3 has cheap fixes worth trying tonight: a kanga over the window for light, moving the sleeping mat away from noise if you can, and a cooler room rather than a hot one. If you are awake for about 20 minutes, still get up per rule 3 rather than lying there frustrated.",
+            "sw": "Shajara yako inaonyesha muda mwingi wa kuwa macho usiku, na uliweka alama kuwa sehemu yako ya kulala ilikuwa sehemu ya kilichokusumbua. Kikao cha 3 kina masuluhisho ya bei nafuu ya kujaribu leo usiku: kuweka kanga dirishani kwa mwanga, kuhamisha mkeka wa kulala mbali na kelele ikiwezekana, na chumba baridi zaidi kuliko cha moto. Ukiwa macho kwa dakika 20 hivi, bado amka kulingana na kanuni ya 3 badala ya kulala hapo ukiwa umekasirika.",
+            "sheng": "Diary yako inaonyesha muda mob umeamka usiku, na ulimark sehemu yako ya kulala kama part ya kilichokusumbua. Session 3 iko na cheap fixes za kutry leo usiku: kuweka kanga kwa window kwa mwanga, kuhamisha mkeka mbali na noise ikiwezekana, na room baridi zaidi kuliko moto. Ukiwa umeamka kwa dakika 20, bado toka kulingana na rule 3 badala ya kulala hapo ukiwa frustrated."
+          }
+        },
+        {
+          "id": "woke_in_night_high_waso",
+          "when": [{ "flag": "highWASO", "equals": true }],
+          "response": {
+            "en": "Your diary shows a lot of time awake during the night. This is exactly what rule 3 is for: if about 20 minutes pass and sleep has not returned, get up, keep the light dim, do something boring, and go back only when sleepy. Do not check the clock; turn it face down and let go instead.",
+            "sw": "Shajara yako inaonyesha muda mwingi wa kuwa macho wakati wa usiku. Hii ndio kanuni ya 3 ilivyokusudiwa: dakika 20 hivi zikipita na usingizi haujarudi, amka, weka mwanga hafifu, fanya jambo la kuchosha, na urudi tu ukiwa umesinzia. Usiangalie saa; iweke chini na uachilie badala yake.",
+            "sheng": "Diary yako inaonyesha muda mob umeamka during usiku. Hii ndio rule 3 ilikuwa ya hiyo: dakika 20 zikipita na sleep haijarudi, toka, weka mwanga mdogo, fanya kitu boring, na urudi tu ukiwa umesinzia. Usiangalie clock; iweke chini face down na uachilie badala yake."
+          }
+        }
+      ],
+      "fallback": {
+        "en": "Waking briefly in the night is normal and often goes unnoticed once sleep is more solid. Keep your diary going so your window can be adjusted if this continues.",
+        "sw": "Kuamka kidogo usiku ni jambo la kawaida na mara nyingi haligundulikwi mara usingizi unapokuwa imara zaidi. Endelea na shajara yako ili dirisha lako lirekebishwe hili likiendelea.",
+        "sheng": "Kuamka kidogo usiku ni kitu ya kawaida na mara nyingi haigundulikwi mara sleep inakuwa solid zaidi. Endelea na diary yako ili window yako iadjustwe hii ikiendelea."
+      }
+    },
+    {
+      "id": "woke_early",
+      "prompt": {
+        "en": "I woke up too early and could not get back to sleep",
+        "sw": "Niliamka mapema mno na sikuweza kurudi kulala",
+        "sheng": "Niliamkia mapema sana sikuweza kurudi kulala"
+      },
+      "branches": [],
+      "fallback": {
+        "en": "Keep your wake-up time exactly as planned, even after a night like this: staying in bed longer reopens the gap between time in bed and time asleep. If you are lying there awake, get up per rule 3 rather than dozing on and off. Bright light and activity once you are up help set tomorrow night's sleep. Early waking that does not repeat is common while your body adjusts; if it keeps happening for several nights, mention it to your facilitator.",
+        "sw": "Weka muda wako wa kuamka sawasawa kama ulivyopangwa, hata baada ya usiku kama huu: kukaa kitandani zaidi kunafungua tena pengo kati ya muda kitandani na muda wa kulala. Ukiwa umelala hapo ukiwa macho, amka kulingana na kanuni ya 3 badala ya kusinzia mara kwa mara. Mwanga mkali na shughuli mara ukiwa umeamka vinasaidia kuweka usingizi wa usiku ujao. Kuamka mapema ambako hakujirudia mara kwa mara ni jambo la kawaida wakati mwili wako unazoea; likiendelea kwa usiku kadhaa, mwambie mwezeshaji wako.",
+        "sheng": "Weka wake time yako sawa sawa kama ulivyopanga, hata baada ya usiku kama hii: kukaa bedani zaidi inafungua tena gap kati ya time in bed na time asleep. Ukiwa umelala hapo umeamka, toka kulingana na rule 3 badala ya kusinzia mara kwa mara. Mwanga bright na kufanya kitu mara ukiwa umeamka inasaidia kuset sleep ya usiku unaofuata. Kuamkia mapema ambayo haijirudii mara kwa mara ni kitu ya kawaida wakati mwili wako unazoea; ikiendelea kwa nights kadhaa, mwambie facilitator wako."
+      }
+    },
+    {
+      "id": "daytime_sleepy",
+      "prompt": {
+        "en": "I feel very sleepy during the day",
+        "sw": "Ninasinzia sana mchana",
+        "sheng": "Ninasinzia sana mchana"
+      },
+      "branches": [
+        {
+          "id": "daytime_sleepy_high",
+          "when": [{ "flag": "sleepinessHighOrDangerous", "equals": true }],
+          "response": {
+            "en": "Feeling this sleepy in the day is expected in the first week or two of a shorter window: it means the plan is building sleep debt. For safety, avoid driving, operating machinery, or any task where dozing off would be dangerous. Get sunlight and move your body during the day, but not naps, since a nap spends the sleep debt tonight needs. This should ease as your window opens back up.",
+            "sw": "Kusinzia hivi mchana kunatarajiwa katika wiki ya kwanza au ya pili ya dirisha fupi: inamaanisha mpango unajenga deni la usingizi. Kwa usalama, epuka kuendesha gari, kutumia mashine, au kazi yoyote ambapo kusinzia kungekuwa hatari. Pata jua na sogeza mwili wako mchana, lakini si kulala mchana, kwa sababu kulala mchana kunatumia deni la usingizi ambalo usiku unahitaji. Hili linapaswa kupungua dirisha lako linapoanza kufunguka tena.",
+            "sheng": "Ku-feel sleepy hivi mchana ni expected kwa week ya kwanza ama ya pili ya window fupi: inamaanisha mpango unabuild sleep debt. Kwa usalama, epuka kudrive, kutumia machine, ama kazi yoyote ambayo kusinzia ingekuwa hatari. Pata jua na move mwili wako mchana, lakini sio kulala mchana, kwa sababu kulala mchana inatumia sleep debt ambayo usiku unahitaji. Hii inapaswa kupungua window yako ikianza kufunguka tena."
+          }
+        },
+        {
+          "id": "daytime_sleepy_napped",
+          "when": [{ "flag": "nappedYesterday", "equals": true }],
+          "response": {
+            "en": "Your diary shows you napped. A daytime nap spends part of the sleep debt your window is building, which can make tonight harder rather than easier. If you feel very sleepy today, try a short walk, sunlight, or talking with someone instead, and save rest for your prescribed window tonight.",
+            "sw": "Shajara yako inaonyesha ulilala mchana. Kulala mchana kunatumia sehemu ya deni la usingizi ambalo dirisha lako linajenga, jambo linaloweza kufanya usiku huu kuwa mgumu zaidi badala ya rahisi. Ukisinzia sana leo, jaribu kutembea kidogo, kupata jua, au kuzungumza na mtu badala yake, na hifadhi kupumzika kwa dirisha lako lililopangwa usiku huu.",
+            "sheng": "Diary yako inaonyesha ulilala mchana. Kulala mchana inatumia part ya sleep debt ambayo window yako inabuild, kitu ambacho kinaweza kufanya usiku huu kuwa ngumu zaidi badala ya rahisi. Ukisinzia sana leo, try kutembea kidogo, kupata jua, ama kuongea na mtu badala yake, na weka rest kwa window yako iliyopangwa usiku huu."
+          }
+        }
+      ],
+      "fallback": {
+        "en": "Some daytime sleepiness is normal while your window is short. It should ease within a week or two as your window grows. If it does not, or if it ever puts your safety at risk, tell your facilitator right away.",
+        "sw": "Kusinzia kidogo mchana ni jambo la kawaida wakati dirisha lako ni fupi. Linapaswa kupungua ndani ya wiki moja au mbili dirisha lako linavyokua. Kama halipungui, au likiwahi kuweka usalama wako hatarini, mwambie mwezeshaji wako mara moja.",
+        "sheng": "Kusinzia kidogo mchana ni kitu ya kawaida wakati window yako iko fupi. Inapaswa kupungua ndani ya week moja ama mbili window yako ikikua. Kama haipungui, ama ikiwahi kuweka usalama wako hatarini, mwambie facilitator wako mara moja."
+      }
+    },
+    {
+      "id": "motivation_low",
+      "prompt": {
+        "en": "I want to give up, this is too hard",
+        "sw": "Nataka kuacha, hii ni ngumu mno",
+        "sheng": "Nataka kuacha, hii ni ngumu sana"
+      },
+      "branches": [],
+      "fallback": {
+        "en": "The first nights on a shorter window are the hardest part of the whole program, on purpose: that is what builds the sleep debt your body needs. It gets easier from here, not harder. Remember the wake-up and bedtime you committed to in session 1, and if you are struggling, tell your facilitator: the window can be reviewed sooner than the next scheduled session if you need that.",
+        "sw": "Usiku za kwanza za dirisha fupi ndio sehemu ngumu zaidi ya programu nzima, kwa makusudi: hilo ndilo linalojenga deni la usingizi ambalo mwili wako unahitaji. Kutoka hapa, inakuwa rahisi zaidi, si ngumu zaidi. Kumbuka muda wa kuamka na wa kulala ulioahidi kwenye kikao cha kwanza, na kama unapambana, mwambie mwezeshaji wako: dirisha linaweza kupitiwa mapema kuliko kikao kilichopangwa ukihitaji hivyo.",
+        "sheng": "Nights za kwanza za window fupi ndio part ngumu zaidi ya program mzima, on purpose: ndio inabuild ile sleep debt ambayo mwili wako inahitaji. Kutoka hapa, inakuwa rahisi zaidi, si ngumu zaidi. Kumbuka wake time na bedtime uliokubali kwa session ya kwanza, na kama unastruggle, mwambie facilitator wako: window inaweza kureviewiwa mapema kuliko session iliyopangwa ukihitaji hivyo."
+      }
+    },
+    {
+      "id": "shared_space",
+      "prompt": {
+        "en": "Someone else needs to sleep in the same room or bed",
+        "sw": "Mtu mwingine anahitaji kulala chumba au kitanda kimoja",
+        "sheng": "Mtu mwingine anahitaji kulala room ama bed moja"
+      },
+      "branches": [],
+      "fallback": {
+        "en": "Many people in this program share one room, or the bed itself, and there is no single perfect answer, only what works in your home. When you need to get up per rule 3, try sitting on the edge of the bed or a stool, using a corner with a chair and a shuka set up before bed, or stepping just outside the door if it is safe. Plan your spot ahead of time, before you need it.",
+        "sw": "Watu wengi katika programu hii wanashiriki chumba kimoja, au kitanda chenyewe, na hakuna jibu moja kamili, ni tu kile kinachofanya kazi nyumbani kwako. Unapohitaji kuamka kulingana na kanuni ya 3, jaribu kukaa ukingoni mwa kitanda au kwenye kigoda, kutumia kona yenye kiti na shuka iliyowekwa tayari kabla ya kulala, au kutoka nje ya mlango kidogo ikiwa ni salama. Panga mahali pako mapema, kabla hujahitaji.",
+        "sheng": "Watu wengi kwa program hii wanashare room moja, ama bed yenyewe, na hakuna jibu moja perfect, ni tu ile inafanya kazi kwa home yako. Ukihitaji kutoka kulingana na rule 3, try kukaa edge ya bed ama kwa stool, kutumia corner na kiti na shuka imewekwa tayari kabla ya kulala, ama kutoka nje kidogo ya mlango kama iko safe. Panga spot yako mapema, kabla hujaihitaji."
+      }
+    },
+    {
+      "id": "possible_apnea",
+      "routesToSafety": "apnea",
+      "prompt": {
+        "en": "I snore loudly, or someone says I stop breathing while asleep",
+        "sw": "Ninakoroma sana, au mtu anasema ninaacha kupumua nikiwa nimelala",
+        "sheng": "Ninasnore sana, ama mtu anasema ninaacha kupumua nikiwa nimelala"
+      },
+      "branches": [],
+      "fallback": {
+        "en": "Thank you for telling us. This needs a different kind of care than this program gives, so we are showing you where to go next.",
+        "sw": "Asante kwa kutuambia. Hili linahitaji aina tofauti ya matunzo kuliko ile programu hii inatoa, hivyo tunakuonyesha wapi pa kwenda sasa.",
+        "sheng": "Asante kwa kutuambia. Hii inahitaji aina tofauti ya care kuliko ile program hii inatoa, kwa hivyo tunakuonyesha wapi pa kwenda sasa."
+      }
+    },
+    {
+      "id": "self_harm",
+      "routesToSafety": "selfHarm",
+      "prompt": {
+        "en": "I am having a really hard time and thinking about hurting myself",
+        "sw": "Ninapitia wakati mgumu sana na ninawaza kujidhuru",
+        "sheng": "Ninapitia time ngumu sana na ninawaza kujiumiza"
+      },
+      "branches": [],
+      "fallback": {
+        "en": "Thank you for telling us. Your safety matters more than anything else in this app, so we are showing you where to go right now.",
+        "sw": "Asante kwa kutuambia. Usalama wako ni muhimu zaidi ya kitu kingine chochote katika programu hii, hivyo tunakuonyesha wapi pa kwenda sasa hivi.",
+        "sheng": "Asante kwa kutuambia. Usalama wako ni muhimu zaidi ya kitu kingine chochote kwa app hii, kwa hivyo tunakuonyesha wapi pa kwenda sasa hivi."
+      }
+    }
+  ]
+}

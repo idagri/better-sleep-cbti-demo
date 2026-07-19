@@ -249,14 +249,13 @@ test('checkSustainedSleepiness: two high reports do not trigger', () => {
   assertTrue(!r.triggered);
 });
 
-test('runSafetyChecks: self-harm and apnea both surface, self-harm first', () => {
+test('runSafetyChecks: apnea surfaces on its own', () => {
   const events = E.runSafetyChecks({
     windowMin: 360,
     diaryEntries: [],
-    screener: { selfHarm: true, snoringApnea: true },
+    screener: { snoringApnea: true },
   });
-  assertEqual(events[0].code, 'self_harm');
-  assertEqual(events[1].code, 'apnea');
+  assertEqual(events[0].code, 'apnea');
 });
 
 test('runSafetyChecks: window at floor surfaces a refer event', () => {

@@ -192,6 +192,14 @@ export function initialWindowFromBaseline(validBaselineNights) {
 // choices standing in for clinical judgment and MUST be reviewed by Sean
 // Drummond before this is shared with anyone outside the team (see
 // README.md "What needs clinical review").
+//
+// A self-harm screener and referral gate was deliberately removed here on
+// 2026-07-19 at Ida's direction: this demo has no IRB coverage for asking
+// about self-harm, is not administered under a research protocol with a
+// real referral pathway behind it, and the question raises a safety
+// obligation the demo has no space to meet responsibly. The apnea,
+// sleepiness, and window-floor gates remain because none of them involve
+// eliciting a self-harm disclosure.
 // ---------------------------------------------------------------------
 
 export function checkWindowFloor(windowMin) {
@@ -221,18 +229,11 @@ export function checkApneaFlag(screener) {
   return !!(screener && screener.snoringApnea);
 }
 
-export function checkSelfHarmFlag(screener) {
-  return !!(screener && screener.selfHarm);
-}
-
 // Aggregates every safety check into one ordered list. Order matters: more
 // urgent, less CBT-I-related conditions are listed first because they stop
 // CBT-I coaching entirely rather than just adjusting the window.
 export function runSafetyChecks({ windowMin, diaryEntries, screener }) {
   const events = [];
-  if (checkSelfHarmFlag(screener)) {
-    events.push({ code: 'self_harm', severity: 'stop_and_refer' });
-  }
   if (checkApneaFlag(screener)) {
     events.push({ code: 'apnea', severity: 'stop_and_refer' });
   }

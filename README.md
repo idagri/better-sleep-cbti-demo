@@ -37,19 +37,22 @@ below before sharing the link with anyone outside the team.
 - The scripted troubleshooter (Mode A) covers 8 topics with a small number
   of diary-state branches each — enough to show the pattern, not the full
   clinical breadth a real deployment would need.
-- The safety screener is two yes/no questions asked once at onboarding
-  (re-answerable is not exposed in the UI yet); a production build would
-  want this reachable and re-askable at any time, and probably prompted
-  periodically.
-- Mode B (bring-your-own-key) is a thin demo affordance: it calls the
-  Anthropic API directly from the browser with the
-  `anthropic-dangerous-direct-browser-access` header, which is fine for a
-  reviewer pasting their own throwaway key but is explicitly not a pattern
+- The safety screener is one yes/no question (loud snoring / witnessed
+  breathing pauses) asked at onboarding, and it is re-askable at any time
+  from Settings → "Retake personal assessment" (added 2026-07-19), which
+  also lets the wake-time anchor be updated without touching diary or
+  window data. A self-harm question was deliberately **not** added here:
+  see "Why there is no self-harm question" below.
+- Mode B (bring-your-own-key) calls the Groq API directly from the browser.
+  Groq was chosen specifically so a reviewer can try it with a genuinely
+  free key (no credit card, ever) rather than needing paid credits, per
+  Ida's 2026-07-19 request. This is still a demo-only pattern, not something
   to ship in a real product (it exposes whatever key is pasted to anyone
-  inspecting that browser session). Confirmed reachable end-to-end during
-  this build (a deliberately invalid key got a real `401` from the API, not
-  a CORS or network failure) — the actual answer quality is untested since
-  no valid key was available.
+  inspecting that browser session; a real deployment would need a thin
+  server-side proxy so no key ever reaches the client). Confirmed reachable
+  end-to-end during this build (a deliberately invalid key got a real `401`
+  from the real endpoint, not a CORS or network failure) — actual answer
+  quality with a valid key is otherwise untested.
 
 ## The deterministic engine (the substantive part)
 
@@ -121,23 +124,35 @@ of these are dismissible banners the person can scroll past.
 | Window floor | Prescribed window would go below 5 hours | Clamp to 5 hours; tell the person to speak to the study team |
 | Daytime sleepiness, urgent | Any single "dangerously sleepy" diary report | Advise against driving/machinery immediately |
 | Daytime sleepiness, sustained | 3+ "very sleepy" reports in trailing 7 nights | Same advisory, framed as a pattern to flag to the facilitator |
-| Possible apnea | Onboarding screener: loud snoring + witnessed breathing pauses | Stop giving CBT-I advice; show referral message |
-| Self-harm indication | Onboarding screener: thoughts of self-harm or life not worth living | Stop giving CBT-I advice; show referral message; app does not attempt to counsel |
+| Possible apnea | Screener: loud snoring + witnessed breathing pauses | Stop giving CBT-I advice; show referral message |
 
-The two screener questions are asked once at onboarding. Tapping either of
-the two matching buttons on the Ask screen ("I snore loudly..." /
-"...thinking about hurting myself") re-triggers the same gate, so a person
-who doesn't disclose at onboarding can still reach the referral pathway
-later.
+The apnea screener question is asked at onboarding and is re-askable at any
+time from Settings ("Retake personal assessment"). Tapping the matching
+button on the Ask screen ("I snore loudly...") re-triggers the same gate,
+so a person who doesn't disclose at onboarding can still reach the referral
+pathway later.
 
-**The self-harm and apnea referral text contains bracketed placeholders**
-(`[STUDY TEAM CONTACT — to be filled in before real use]`,
-`[LOCAL CRISIS LINE — to be filled in before real use]`) instead of a real
-phone number. This was deliberate: a wrong or outdated crisis-line number
-shown at the exact moment someone discloses self-harm risk is worse than an
-obvious placeholder. **A real, currently-correct contact must replace these
-before this is shown to anyone outside the team**, and that substitution
-itself should be reviewed, not just typed in.
+**The apnea referral text deliberately has no phone number or contact
+placeholder in it**, only "tell your study facilitator so they can arrange
+a referral." If a real contact or hotline is ever added here, it must not
+be a guessed phone number: a wrong or outdated number shown at the moment
+someone is disclosing a health concern is worse than an honest "ask your
+facilitator."
+
+### Why there is no self-harm question
+
+An earlier build of this demo asked a self-harm screening question at
+onboarding and had a matching hard-stop referral gate. **Ida removed both
+on 2026-07-19**: this demo is not administered under a research protocol
+with IRB coverage for eliciting self-harm disclosures, has no real referral
+pathway or clinician behind it, and the question raises a safety obligation
+this static demo has no space to meet responsibly. The apnea question was
+kept because it does not carry the same disclosure risk. If a future
+production build re-introduces self-harm screening, it needs its own IRB
+review and a real, staffed referral pathway first, not just a UI question.
+The Mode B (Groq) system prompt still tells the model to deflect rather
+than engage if free text raises self-harm, since that path has no
+structured backstop at all (see `js/app.js`, `askGenerativeLayer`).
 
 ## What needs Sean Drummond's clinical review before this link goes anywhere near a funder
 
@@ -154,13 +169,11 @@ itself should be reviewed, not just typed in.
    validated pilot instrument; added here only to make the safety rule
    computable. Sean should confirm the wording and scale are appropriate,
    or replace it with whatever the real protocol would use.
-5. **The two-question safety screener wording** (apnea, self-harm) — plain
-   non-clinical phrasing was used deliberately, but the actual questions,
-   thresholds, and referral pathway should be clinician-approved before any
-   real person answers them, even in a demo a reviewer might click through.
-6. **The self-harm and apnea referral text**, once the bracketed contact
-   placeholders are filled in with real information.
-7. **The troubleshooter response library** (`data/troubleshooter.json`) —
+5. **The apnea screener question and referral text** — plain non-clinical
+   phrasing was used deliberately, but the actual question, threshold, and
+   referral pathway should be clinician-approved before any real person
+   answers it, even in a demo a reviewer might click through.
+6. **The troubleshooter response library** (`data/troubleshooter.json`) —
    the branching logic is mechanical, but the actual advice text should be
    read end to end by someone clinically qualified before this is treated
    as more than a demo.
@@ -205,8 +218,9 @@ payment, no Fitbit integration, no native app.
   the actual pilot ran (facilitator reads diaries, hands out window cards).
 - Diary entries keyed to real calendar dates with a proper "haven't logged
   today yet" reminder flow, not the sequential night-counter used here.
-- A safety screener that's reachable and re-askable at any time, not just at
-  onboarding, and probably a periodic re-check.
+- A properly IRB-reviewed self-harm and mental-health-crisis pathway, with a
+  real staffed referral behind it, if the study ever wants one — not
+  something to add to this static demo without that groundwork.
 - A much larger, clinician-authored troubleshooter library, ideally the
   Level 1 golden dataset this structure is meant to seed (50 real sleep
   problems with known-correct responses, per the DIV application's Q4 eval

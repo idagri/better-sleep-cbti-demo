@@ -7,13 +7,12 @@ function defaultState() {
     language: 'en',
     onboarded: false,
     wakeTime: null, // "HH:MM", the fixed anchor the user commits to
-    screener: { snoringApnea: null, selfHarm: null },
+    screener: { snoringApnea: null },
     diaryEntries: [], // { date, napMin, bedTime, sleepTryTime, solMin, wasoMin, wakeTime, outOfBedTime, interference:{}, sleepiness }
     windowMin: null, // current prescribed window, once established
     windowHistory: [], // { date, windowMin, meanSE, action, nightsUsed }
     byokKey: null,
     ack: {
-      selfHarm: false,
       apnea: false,
       windowFloor: false,
       sleepinessUrgentDates: [],

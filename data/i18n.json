@@ -1,5 +1,5 @@
 {
-  "_readme": "UI chrome, onboarding, and safety-gate copy in English, Kiswahili, and Sheng. The safety.selfHarm and safety.apnea blocks are the most sensitive content in this app: contact placeholders are deliberately left as bracketed TODOs rather than a guessed phone number, because a wrong crisis-line number here is worse than an obvious placeholder. See README.md before this is shown to anyone outside the team.",
+  "_readme": "UI chrome, onboarding, and safety-gate copy in English, Kiswahili, and Sheng. The self-harm screener question and referral gate were removed 2026-07-19 at Ida's direction (no IRB coverage for this demo, no real referral pathway behind it). The safety.apnea block is still sensitive content: its contact-adjacent guidance should be read alongside the app's own README before this is shown to anyone outside the team.",
   "languages": [
     { "code": "en", "label": "English" },
     { "code": "sw", "label": "Kiswahili" },
@@ -51,20 +51,20 @@
       "sw": "Kabla hatujaanza",
       "sheng": "Kabla hatujaanza"
     },
+    "reassessTitle": {
+      "en": "Retake your personal assessment",
+      "sw": "Rudia tathmini yako binafsi",
+      "sheng": "Rudia assessment yako binafsi"
+    },
     "screenerIntro": {
-      "en": "Two quick questions, for your safety. Your answers stay on this device.",
-      "sw": "Maswali mawili ya haraka, kwa usalama wako. Majibu yako yanabaki kwenye kifaa hiki.",
-      "sheng": "Maswali mbili haraka, kwa usalama wako. Majibu yako yanabaki kwa kifaa hiki."
+      "en": "One quick question, for your safety. Your answer stays on this device.",
+      "sw": "Swali moja la haraka, kwa usalama wako. Jibu lako linabaki kwenye kifaa hiki.",
+      "sheng": "Swali moja haraka, kwa usalama wako. Jibu lako linabaki kwa kifaa hiki."
     },
     "screenerApnea": {
       "en": "Does anyone tell you that you snore loudly and seem to stop breathing for a moment while you sleep?",
       "sw": "Je, kuna mtu anakuambia unakoroma sana na unaonekana kuacha kupumua kwa muda ukiwa umelala?",
       "sheng": "Je, kuna mtu anakuambia unasnore sana na unaonekana kuacha kupumua kwa muda ukiwa umelala?"
-    },
-    "screenerSelfHarm": {
-      "en": "In the past two weeks, have you had thoughts of hurting yourself, or that life is not worth living?",
-      "sw": "Katika wiki mbili zilizopita, umewahi kuwa na mawazo ya kujidhuru, au kwamba maisha hayana thamani?",
-      "sheng": "Kwa wiki mbili zilizopita, umewahi kuwa na mawazo ya kujiumiza, ama kwamba maisha hayana thamani?"
     },
     "yes": { "en": "Yes", "sw": "Ndiyo", "sheng": "Ndiyo" },
     "no": { "en": "No", "sw": "Hapana", "sheng": "Hapana" },
@@ -73,7 +73,8 @@
       "sw": "Chagua muda wa kuamka unaoweza kudumisha kila siku, hata wikendi",
       "sheng": "Chagua wake time unayoweza kudumisha kila siku, hata weekend"
     },
-    "continueButton": { "en": "Continue", "sw": "Endelea", "sheng": "Endelea" }
+    "continueButton": { "en": "Continue", "sw": "Endelea", "sheng": "Endelea" },
+    "saveButton": { "en": "Save", "sw": "Hifadhi", "sheng": "Save" }
   },
   "diary": {
     "title": { "en": "Sleep diary", "sw": "Shajara ya usingizi", "sheng": "Diary ya sleep" },
@@ -135,15 +136,6 @@
     }
   },
   "safety": {
-    "selfHarm": {
-      "title": { "en": "Please stop here and reach out", "sw": "Tafadhali simama hapa na uwasiliane na mtu", "sheng": "Simama hapa kwanza uongee na mtu" },
-      "body": {
-        "en": "You shared something serious just now. This app cannot help with thoughts of hurting yourself, and will not try. Please talk to a real person today: [STUDY TEAM CONTACT — to be filled in before real use] or [LOCAL CRISIS LINE — to be filled in before real use]. If you are in danger right now, go to the nearest health facility. You matter, and this feeling can change with the right support.",
-        "sw": "Umeshiriki kitu kizito sasa hivi. Programu hii haiwezi kusaidia na mawazo ya kujidhuru, na haitajaribu. Tafadhali zungumza na mtu halisi leo: [MAWASILIANO YA TIMU YA UTAFITI — yataongezwa kabla ya matumizi halisi], au [NAMBA YA DHARURA YA KIENYEJI — itaongezwa kabla ya matumizi halisi]. Ukiwa katika hatari sasa hivi, nenda kituo cha afya kilicho karibu. Wewe ni muhimu, na hisia hii inaweza kubadilika kwa msaada sahihi.",
-        "sheng": "Umeshare kitu serious sasa hivi. App hii haiwezi kusaidia na mawazo ya kujiumiza, na haitatry. Tafadhali ongea na mtu halisi leo: [CONTACT YA STUDY TEAM — itaongezwa kabla ya matumizi halisi], ama [CRISIS LINE YA HAPA — itaongezwa kabla ya matumizi halisi]. Ukiwa kwa hatari sasa hivi, enda kwa health facility iko karibu. Wewe ni muhimu, na hii feeling inaweza kubadilika ukipata msaada sahihi."
-      },
-      "button": { "en": "I have read this", "sw": "Nimesoma hili", "sheng": "Nimesoma hii" }
-    },
     "apnea": {
       "title": { "en": "This needs a different kind of care", "sw": "Hii inahitaji aina tofauti ya matunzo", "sheng": "Hii inahitaji aina tofauti ya care" },
       "body": {
@@ -194,11 +186,18 @@
   "settings": {
     "title": { "en": "Settings", "sw": "Mipangilio", "sheng": "Settings" },
     "languageLabel": { "en": "Language", "sw": "Lugha", "sheng": "Lugha" },
-    "byokTitle": { "en": "Optional: bring your own key", "sw": "Hiari: leta ufunguo wako mwenyewe", "sheng": "Hiari: leta key yako mwenyewe" },
+    "reassessTitle": { "en": "Personal assessment", "sw": "Tathmini binafsi", "sheng": "Personal assessment" },
+    "reassessBody": {
+      "en": "Retake the apnea question and update your wake-up time at any time. Your diary and window stay exactly as they are.",
+      "sw": "Rudia swali la apnea na sasisha muda wako wa kuamka wakati wowote. Shajara yako na dirisha lako vitabaki kama vilivyo.",
+      "sheng": "Rudia swali la apnea na usasishe wake time yako wakati wowote. Diary yako na window yako vitabaki kama vilivyo."
+    },
+    "reassessButton": { "en": "Retake personal assessment", "sw": "Rudia tathmini binafsi", "sheng": "Rudia personal assessment" },
+    "byokTitle": { "en": "Optional: try the chat demo (free key)", "sw": "Hiari: jaribu chat demo (ufunguo wa bure)", "sheng": "Hiari: jaribu chat demo (key ya bure)" },
     "byokBody": {
-      "en": "This is a demo affordance for reviewers only, not part of the real product. Pasting a key here lets the Ask screen answer free-text questions using a generative model instead of the scripted library. Your key is stored only in this browser and is sent directly from your device to the model provider; it never touches any server we control.",
-      "sw": "Hii ni njia ya onyesho kwa wakaguzi tu, si sehemu ya bidhaa halisi. Kubandika ufunguo hapa kunaruhusu skrini ya Uliza kujibu maswali ya kuandika mwenyewe kwa kutumia modeli ya kutengeneza badala ya maktaba iliyopangwa. Ufunguo wako unahifadhiwa tu kwenye kivinjari hiki na unatumwa moja kwa moja kutoka kifaa chako hadi mtoa huduma wa modeli; hauguzi seva yoyote tunayodhibiti.",
-      "sheng": "Hii ni demo affordance kwa reviewers tu, sio part ya product halisi. Ku-paste key hapa inaruhusu Ask screen kujibu free-text questions ikitumia generative model badala ya scripted library. Key yako inahifadhiwa tu kwa browser hii na inatumwa moja kwa moja kutoka kifaa chako mpaka model provider; haiguzi server yoyote tunayodhibiti."
+      "en": "This is a demo affordance for reviewers only, not part of the real product. Get a free API key with no credit card at console.groq.com, paste it below, and the Ask screen will answer free-text questions with a small open model instead of the scripted library. Your key is stored only in this browser and is sent directly from your device to Groq; it never touches any server we control.",
+      "sw": "Hii ni njia ya onyesho kwa wakaguzi tu, si sehemu ya bidhaa halisi. Pata ufunguo wa API bila malipo bila kadi ya benki kwenye console.groq.com, ubandike hapa chini, na skrini ya Uliza itajibu maswali ya kuandika mwenyewe kwa modeli ndogo huru badala ya maktaba iliyopangwa. Ufunguo wako unahifadhiwa tu kwenye kivinjari hiki na unatumwa moja kwa moja kutoka kifaa chako hadi Groq; hauguzi seva yoyote tunayodhibiti.",
+      "sheng": "Hii ni demo affordance kwa reviewers tu, sio part ya product halisi. Pata free API key bila credit card kwa console.groq.com, uipaste hapa chini, na Ask screen itajibu free-text questions ikitumia small open model badala ya scripted library. Key yako inahifadhiwa tu kwa browser hii na inatumwa moja kwa moja kutoka kifaa chako mpaka Groq; haiguzi server yoyote tunayodhibiti."
     },
     "byokKeyLabel": { "en": "API key (kept in this browser only)", "sw": "Ufunguo wa API (unabaki kwenye kivinjari hiki tu)", "sheng": "API key (inabaki kwa browser hii tu)" },
     "byokSave": { "en": "Save key", "sw": "Hifadhi ufunguo", "sheng": "Save key" },

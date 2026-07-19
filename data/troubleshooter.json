@@ -174,21 +174,6 @@
         "sw": "Asante kwa kutuambia. Hili linahitaji aina tofauti ya matunzo kuliko ile programu hii inatoa, hivyo tunakuonyesha wapi pa kwenda sasa.",
         "sheng": "Asante kwa kutuambia. Hii inahitaji aina tofauti ya care kuliko ile program hii inatoa, kwa hivyo tunakuonyesha wapi pa kwenda sasa."
       }
-    },
-    {
-      "id": "self_harm",
-      "routesToSafety": "selfHarm",
-      "prompt": {
-        "en": "I am having a really hard time and thinking about hurting myself",
-        "sw": "Ninapitia wakati mgumu sana na ninawaza kujidhuru",
-        "sheng": "Ninapitia time ngumu sana na ninawaza kujiumiza"
-      },
-      "branches": [],
-      "fallback": {
-        "en": "Thank you for telling us. Your safety matters more than anything else in this app, so we are showing you where to go right now.",
-        "sw": "Asante kwa kutuambia. Usalama wako ni muhimu zaidi ya kitu kingine chochote katika programu hii, hivyo tunakuonyesha wapi pa kwenda sasa hivi.",
-        "sheng": "Asante kwa kutuambia. Usalama wako ni muhimu zaidi ya kitu kingine chochote kwa app hii, kwa hivyo tunakuonyesha wapi pa kwenda sasa hivi."
-      }
     }
   ]
 }

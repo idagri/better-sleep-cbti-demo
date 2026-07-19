@@ -36,7 +36,6 @@ function pendingSafetyEvents() {
     : null;
 
   return events.filter((ev) => {
-    if (ev.code === 'self_harm') return !state.ack.selfHarm;
     if (ev.code === 'apnea') return !state.ack.apnea;
     if (ev.code === 'window_floor') return !state.ack.windowFloor;
     if (ev.code === 'daytime_sleepiness') {
@@ -53,8 +52,7 @@ function acknowledge(ev) {
   const lastDate = state.diaryEntries.length
     ? state.diaryEntries[state.diaryEntries.length - 1].date
     : null;
-  if (ev.code === 'self_harm') setState({ ack: { ...state.ack, selfHarm: true } });
-  else if (ev.code === 'apnea') setState({ ack: { ...state.ack, apnea: true } });
+  if (ev.code === 'apnea') setState({ ack: { ...state.ack, apnea: true } });
   else if (ev.code === 'window_floor') setState({ ack: { ...state.ack, windowFloor: true } });
   else if (ev.code === 'daytime_sleepiness') {
     if (ev.severity === 'urgent') {
@@ -69,7 +67,6 @@ function acknowledge(ev) {
 }
 
 const SAFETY_KEY_BY_CODE = {
-  self_harm: 'selfHarm',
   apnea: 'apnea',
   window_floor: 'windowFloor',
 };
@@ -168,8 +165,7 @@ function navigate(route) {
 }
 
 function currentRoute() {
-  const hash = location.hash.replace('#/', '');
-  return ROUTES.includes(hash) ? hash : 'home';
+  return location.hash.replace('#/', '') || 'home';
 }
 
 function renderNav() {
@@ -193,16 +189,17 @@ function render() {
   renderSafetyGate();
   renderNav();
   if (!state.onboarded) {
-    renderOnboarding();
+    renderOnboarding(false);
     return;
   }
   const route = currentRoute();
-  if (route === 'home') renderHome();
+  if (route === 'reassess') renderOnboarding(true);
   else if (route === 'diary') renderDiary();
   else if (route === 'window') renderWindowScreen();
   else if (route === 'sessions') renderSessions();
   else if (route === 'ask') renderAsk();
   else if (route === 'settings') renderSettings();
+  else renderHome();
 }
 
 window.addEventListener('hashchange', render);
@@ -211,7 +208,10 @@ window.addEventListener('hashchange', render);
 // Onboarding
 // ---------------------------------------------------------------------
 
-function renderOnboarding() {
+// Shared by first-time onboarding and the Settings "retake the personal
+// assessment" flow. Reassessment never touches `onboarded` or diary/window
+// data: it only updates the apnea answer and the wake-time anchor.
+function renderOnboarding(isReassessment) {
   const L = lang();
   const state = getState();
   appEl.innerHTML = '';
@@ -228,13 +228,14 @@ function renderOnboarding() {
     langRow.appendChild(b);
   }
 
-  const screenerDone = state.screener.snoringApnea !== null && state.screener.selfHarm !== null;
+  const screenerDone = state.screener.snoringApnea !== null;
+  const heading = isReassessment
+    ? `<h1>${t('onboarding.reassessTitle', L)}</h1>`
+    : `<h1>${t('landing.appName', L)}</h1><p class="tagline">${t('landing.tagline', L)}</p><h2>${t('onboarding.title', L)}</h2>`;
 
   const card = h(`
     <div class="screen">
-      <h1>${t('landing.appName', L)}</h1>
-      <p class="tagline">${t('landing.tagline', L)}</p>
-      <h2>${t('onboarding.title', L)}</h2>
+      ${heading}
       <p>${t('onboarding.screenerIntro', L)}</p>
       <div class="field">
         <label>${t('onboarding.screenerApnea', L)}</label>
@@ -244,17 +245,10 @@ function renderOnboarding() {
         </div>
       </div>
       <div class="field">
-        <label>${t('onboarding.screenerSelfHarm', L)}</label>
-        <div class="yesno" data-q="selfHarm">
-          <button class="btn ${state.screener.selfHarm === true ? 'selected' : ''}" data-val="true">${t('onboarding.yes', L)}</button>
-          <button class="btn ${state.screener.selfHarm === false ? 'selected' : ''}" data-val="false">${t('onboarding.no', L)}</button>
-        </div>
-      </div>
-      <div class="field">
         <label>${t('onboarding.wakeTimeLabel', L)}</label>
         <input type="time" id="wake-time-input" value="${state.wakeTime || '06:00'}">
       </div>
-      <button class="btn primary wide" id="onboard-continue" ${screenerDone ? '' : 'disabled'}>${t('onboarding.continueButton', L)}</button>
+      <button class="btn primary wide" id="onboard-continue" ${screenerDone ? '' : 'disabled'}>${isReassessment ? t('onboarding.saveButton', L) : t('onboarding.continueButton', L)}</button>
     </div>
   `);
   card.prepend(langRow);
@@ -272,9 +266,14 @@ function renderOnboarding() {
 
   card.querySelector('#onboard-continue').addEventListener('click', () => {
     const wakeTime = card.querySelector('#wake-time-input').value;
-    setState({ onboarded: true, wakeTime });
-    location.hash = '#/home';
-    render();
+    if (isReassessment) {
+      setState({ wakeTime });
+      navigate('settings');
+    } else {
+      setState({ onboarded: true, wakeTime });
+      location.hash = '#/home';
+      render();
+    }
   });
 
   appEl.appendChild(card);
@@ -509,11 +508,6 @@ function renderAsk() {
         renderSafetyGate();
         return;
       }
-      if (topic.routesToSafety === 'selfHarm') {
-        setState({ screener: { ...state.screener, selfHarm: true }, ack: { ...state.ack, selfHarm: false } });
-        renderSafetyGate();
-        return;
-      }
       const response = evaluateTopic(topic, flags);
       responseEl.innerHTML = `<div class="response-card">${pick(response, L)}</div>`;
     });
@@ -555,32 +549,41 @@ function renderAsk() {
 // Mode B: bring-your-own-key generative layer. Optional demo affordance,
 // only reachable if a reviewer pastes their own key in Settings. The key
 // is read from localStorage and sent directly from this browser to the
-// model provider; this app's own code and hosting never see it. Untested
-// against a live key during this build (no key was available); verify
-// before relying on it. See README.md.
+// model provider (Groq); this app's own code and hosting never see it.
+// Groq was chosen so a reviewer can showcase the "what will this look
+// like" question with a genuinely free key (no credit card, ever) rather
+// than needing paid credits. Confirmed reachable during this build (a
+// deliberately invalid key got a real 401 from the API, not a CORS or
+// network failure); answer quality with a valid key is otherwise
+// untested. See README.md.
+//
+// There is no self-harm safety net on this path: the structured self-harm
+// screener and referral gate were removed from the app (2026-07-19, no
+// IRB coverage), so if free text raises it, the only backstop is this
+// system prompt telling the model to deflect rather than engage.
 async function askGenerativeLayer(question, apiKey, language) {
   const languageNote = { en: 'English', sw: 'Kiswahili', sheng: 'Sheng (Nairobi urban register)' }[language];
-  const system = `You are a narrow assistant inside a CBT-I (cognitive behavioral therapy for insomnia) demo app for a Kenyan research study. Answer only questions about sleep and this program, in ${languageNote}, in 2 to 4 short sentences, in plain language for a phone screen. Never diagnose. If the question raises self-harm or a possible breathing/apnea problem, do not answer it: instead say this needs the safety screen in the app, and stop.`;
+  const system = `You are a narrow assistant inside a CBT-I (cognitive behavioral therapy for insomnia) demo app for a Kenyan research study. Answer only questions about sleep and this program, in ${languageNote}, in 2 to 4 short sentences, in plain language for a phone screen. Never diagnose. If the question raises a possible breathing/apnea problem, say this needs a real clinician, not this app, and stop. If the question raises self-harm or a wish to not be alive, do not counsel: gently say this app cannot help with that and the person should talk to someone they trust right now, and stop.`;
 
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
+  const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true',
+      authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: 'claude-haiku-4-5-20251001',
+      model: 'llama-3.1-8b-instant',
       max_tokens: 300,
-      system,
-      messages: [{ role: 'user', content: question }],
+      messages: [
+        { role: 'system', content: system },
+        { role: 'user', content: question },
+      ],
     }),
   });
   if (!res.ok) throw new Error(String(res.status));
   const data = await res.json();
-  const block = (data.content || []).find((b) => b.type === 'text');
-  return block ? block.text : '(no answer)';
+  const message = data.choices && data.choices[0] && data.choices[0].message;
+  return message ? message.content : '(no answer)';
 }
 
 // ---------------------------------------------------------------------
@@ -597,6 +600,12 @@ function renderSettings() {
       <div class="field">
         <label>${t('settings.languageLabel', L)}</label>
         <div class="lang-toggle" id="lang-toggle-settings"></div>
+      </div>
+
+      <div class="callout">
+        <h2>${t('settings.reassessTitle', L)}</h2>
+        <p>${t('settings.reassessBody', L)}</p>
+        <button class="btn" id="reassess-btn">${t('settings.reassessButton', L)}</button>
       </div>
 
       <div class="callout">
@@ -624,6 +633,8 @@ function renderSettings() {
     });
     langRow.appendChild(b);
   }
+
+  card.querySelector('#reassess-btn').addEventListener('click', () => navigate('reassess'));
 
   card.querySelector('#byok-save').addEventListener('click', () => {
     const val = card.querySelector('#byok-input').value.trim();

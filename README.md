@@ -177,27 +177,28 @@ structured backstop at all (see `js/app.js`, `askGenerativeLayer`).
    the branching logic is mechanical, but the actual advice text should be
    read end to end by someone clinically qualified before this is treated
    as more than a demo.
-7. **The `daytime_sleepy_high` driving/machinery caution is new safety
-   content, not condensed from any session deck.** A background content
-   audit (2026-07-19) flagged that no deck anywhere mentions driving or
-   machinery safety; this line was written for the demo's safety story and
-   needs explicit sign-off, not just a fidelity check.
-8. **The 6-hour caffeine cutoff** (session 3, both the deck and the app)
-   is more lenient than the ARISE manual's own stated rationale, which
-   implies an 8 to 10 hour effective window. This predates the app (it is
-   already in `session3_slides.tex`), so it may be a deliberate
-   cultural-feasibility call given local chai-drinking patterns, or an
-   unflagged rounding during the session 3 rebuild — worth a direct answer
-   either way, since the app just inherited it faithfully.
-
 A full content-quality audit against the four session decks (participant
-slides and facilitator notes) and the ARISE manual ran 2026-07-19; items 7
-and 8 above come from it, along with three session-content restorations
-already applied (the session 1 predisposition factor, session 3's "the
-window and four rules still do the heavy lifting" framing, and session 4's
-"poor sleep as a warning sign" framing) and a new differentiated branch on
-the `woke_early` topic, which previously showed the same generic message
-regardless of diary data (see "Context-specific examples" below).
+slides and facilitator notes) and the ARISE manual ran 2026-07-19, and
+found three items, all now resolved:
+
+- **The `daytime_sleepy_high` driving/machinery caution was new safety
+  content, not condensed from any session deck.** Removed 2026-07-20 at
+  Ida's direction: every troubleshooter response now traces to
+  session-deck content only. (The separate hard-stop safety *gate* for
+  daytime sleepiness still names driving/machinery — that mechanism was an
+  explicit original build requirement, not session-deck content, so it was
+  left as is; flagged to Ida for a follow-up decision if she wants that
+  changed too.)
+- **The 6-hour caffeine cutoff** (session 3, both the deck and the app) is
+  more lenient than the ARISE manual's own stated rationale, which implies
+  an 8 to 10 hour effective window. **Confirmed by Ida (2026-07-20) as a
+  deliberate call; left unchanged.**
+- Three content restorations were applied: the session 1 predisposition
+  factor, session 3's "the window and four rules still do the heavy
+  lifting" framing, and session 4's "poor sleep as a warning sign" framing.
+  A new differentiated branch was added to the `woke_early` topic, which
+  previously showed the same generic message regardless of diary data (see
+  "Context-specific examples" below).
 
 ## Context-specific examples (Ask screen)
 

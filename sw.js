@@ -1,7 +1,7 @@
 // Cache-first app shell so the demo works with no connectivity after the
 // first load. Bump CACHE_NAME whenever the precached file list changes so
 // returning visitors pick up the new version instead of a stale cache.
-const CACHE_NAME = 'cbti-demo-v3';
+const CACHE_NAME = 'cbti-demo-v4';
 
 const PRECACHE_URLS = [
   './',

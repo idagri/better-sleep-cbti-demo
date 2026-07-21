@@ -7,6 +7,53 @@ const appEl = document.getElementById('app');
 const navEl = document.getElementById('bottomnav');
 const gateEl = document.getElementById('safetygate');
 
+// Simple hand-drawn SVG icons for the "try an example night" presets
+// (data/examples.json), keyed by preset id. Kept inline rather than as
+// image files so there is nothing to fetch, cache, or host: consistent
+// with the offline-first, no-build-pipeline constraint on this whole app.
+// These are deliberately plain icons, not an attempt at the session
+// decks' warm storybook illustration style (see
+// notes_for_AI or slides/2026-07-15_gemini_image_brief.md for that style,
+// and the handoff this build sent back for matching prompts if richer
+// illustrations are ever wanted here).
+const EXAMPLE_ICONS = {
+  worry_work: `
+    <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">
+      <rect x="1" y="1" width="62" height="62" rx="12" fill="#FAF3DC"/>
+      <rect x="14" y="42" width="36" height="9" rx="4" fill="#1F3557"/>
+      <circle cx="22" cy="39" r="7" fill="#C9A227"/>
+      <path d="M30 20 q4 -6 8 0 q4 6 -2 8" stroke="#7A1F2B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M40 14 q5 -5 9 1 q4 6 -3 8" stroke="#7A1F2B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M46 26 q4 -4 7 1" stroke="#7A1F2B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </svg>`,
+  hot_noisy_room: `
+    <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">
+      <rect x="1" y="1" width="62" height="62" rx="12" fill="#E2F0EF"/>
+      <rect x="10" y="14" width="26" height="26" rx="2" fill="none" stroke="#1F3557" stroke-width="3"/>
+      <line x1="23" y1="14" x2="23" y2="40" stroke="#1F3557" stroke-width="2.5"/>
+      <line x1="10" y1="27" x2="36" y2="27" stroke="#1F3557" stroke-width="2.5"/>
+      <path d="M14 48 q3 -5 6 0 q3 5 6 0" stroke="#C9A227" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M26 48 q3 -5 6 0 q3 5 6 0" stroke="#C9A227" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M44 20 q6 6 0 12" stroke="#7A1F2B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M48 16 q11 10 0 20" stroke="#7A1F2B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </svg>`,
+  napped_after_shift: `
+    <svg viewBox="0 0 64 64" width="36" height="36" aria-hidden="true">
+      <rect x="1" y="1" width="62" height="62" rx="12" fill="#FAF3DC"/>
+      <circle cx="20" cy="18" r="7" fill="#C9A227"/>
+      <g stroke="#C9A227" stroke-width="2.5" stroke-linecap="round">
+        <line x1="20" y1="4" x2="20" y2="8"/>
+        <line x1="8" y1="18" x2="4" y2="18"/>
+        <line x1="9.5" y1="7.5" x2="7" y2="5"/>
+      </g>
+      <circle cx="30" cy="44" r="10" fill="#1F3557"/>
+      <path d="M25 44 q5 4 10 0" stroke="#F7F3EA" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <text x="43" y="35" font-family="sans-serif" font-size="9" fill="#0F7173" font-weight="bold">z</text>
+      <text x="48" y="28" font-family="sans-serif" font-size="11" fill="#0F7173" font-weight="bold">z</text>
+      <text x="54" y="20" font-family="sans-serif" font-size="13" fill="#0F7173" font-weight="bold">z</text>
+    </svg>`,
+};
+
 function h(html) {
   const tpl = document.createElement('template');
   tpl.innerHTML = html.trim();
@@ -405,7 +452,13 @@ function renderDiary() {
 
   const exampleList = card.querySelector('#example-list');
   for (const preset of getData().examples.presets) {
-    const btn = h(`<button class="btn example-btn">${pick(preset.label, L)}</button>`);
+    const icon = EXAMPLE_ICONS[preset.id] || '';
+    const btn = h(`
+      <button class="btn example-btn">
+        <span class="example-icon">${icon}</span>
+        <span class="example-label">${pick(preset.label, L)}</span>
+      </button>
+    `);
     btn.addEventListener('click', () => {
       upsertDiaryEntry({ ...preset.entry, date: nextDate });
       recomputeWindow();

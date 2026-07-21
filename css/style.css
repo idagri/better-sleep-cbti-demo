@@ -126,6 +126,11 @@ label.checkbox, label.radio {
 .langbtn.active { background: var(--navyy); color: #fff; }
 
 .topic-btn { display: block; width: 100%; text-align: left; margin: 0.35rem 0; border-color: var(--prettyteal); color: var(--darkteal); }
+.example-btn { display: block; width: 100%; text-align: left; margin: 0.3rem 0; border-color: var(--gold); color: var(--navyy); background: var(--lightgold); font-size: 0.9rem; }
+
+.badge { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; padding: 0.2rem 0.55rem; border-radius: 999px; margin-bottom: 0.5rem; }
+.badge.personalized { background: var(--lightteal); color: var(--darkteal); border: 1px solid var(--prettyteal); }
+.badge.general { background: #eee; color: var(--midgray); border: 1px solid #ccc; }
 
 .response-card {
   background: var(--lightgold);

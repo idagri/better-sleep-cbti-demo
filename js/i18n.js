@@ -4,12 +4,13 @@ let dataCache = null;
 
 export async function loadData() {
   if (dataCache) return dataCache;
-  const [i18n, sessions, troubleshooter] = await Promise.all([
+  const [i18n, sessions, troubleshooter, examples] = await Promise.all([
     fetch('data/i18n.json').then((r) => r.json()),
     fetch('data/sessions.json').then((r) => r.json()),
     fetch('data/troubleshooter.json').then((r) => r.json()),
+    fetch('data/examples.json').then((r) => r.json()),
   ]);
-  dataCache = { i18n, sessions, troubleshooter };
+  dataCache = { i18n, sessions, troubleshooter, examples };
   return dataCache;
 }
 

@@ -84,6 +84,21 @@
       "sw": "Maswali 8 sawa na shajara ya karatasi iliyotumika kwenye jaribio.",
       "sheng": "Maswali 8 sawa na diary ya karatasi iliyotumika kwa pilot."
     },
+    "examplesTitle": {
+      "en": "In a hurry? Try an example night",
+      "sw": "Una haraka? Jaribu usiku wa mfano",
+      "sheng": "Una haraka? Jaribu night ya mfano"
+    },
+    "examplesBody": {
+      "en": "Each one fills in and saves a realistic night so you can immediately see how the Ask screen responds differently to different diaries.",
+      "sw": "Kila mmoja unajaza na kuhifadhi usiku wa uhalisia ili uone mara moja jinsi skrini ya Uliza inavyojibu tofauti kwa shajara tofauti.",
+      "sheng": "Kila moja inajaza na kusave night ya uhalisia ili uone mara moja jinsi Ask screen inavyojibu tofauti kwa diaries tofauti."
+    },
+    "exampleLoadedNote": {
+      "en": "Example night saved. Go to Ask and tap a topic to see the tailored response.",
+      "sw": "Usiku wa mfano umehifadhiwa. Nenda Uliza na ugusa mada ili uone jibu lililolengwa.",
+      "sheng": "Night ya mfano imesave. Enda Ask na ugusa topic ili uone response iliyolengwa."
+    },
     "napMin": { "en": "How long did you nap yesterday? (0 if no naps, minutes)", "sw": "Ulilala mchana kwa muda gani jana? (0 kama hukulala, dakika)", "sheng": "Ulilala mchana kwa muda gani jana? (0 kama hukulala, dakika)" },
     "bedTime": { "en": "What time did you get into bed last night?", "sw": "Uliingia kitandani saa ngapi jana usiku?", "sheng": "Uliingia bedani saa ngapi jana usiku?" },
     "sleepTryTime": { "en": "What time did you close your eyes intending to sleep?", "sw": "Ulifumba macho saa ngapi ukiwa na nia ya kulala?", "sheng": "Ulifumba macho saa ngapi ukiwa na nia ya kulala?" },
@@ -181,7 +196,9 @@
       "sheng": "Gusa kilichohappen. Answers zinatumia diary yako mwenyewe, sio kubahatisha, na haziwahi kutoka kwa kifaa hiki."
     },
     "modeALabel": { "en": "Scripted troubleshooter (offline, always available)", "sw": "Msaidizi wa maswali uliopangwa (nje ya mtandao, upo daima)", "sheng": "Scripted troubleshooter (offline, iko daima)" },
-    "modeBLabel": { "en": "Free-text question (needs your own API key)", "sw": "Swali la kuandika mwenyewe (linahitaji ufunguo wako wa API)", "sheng": "Swali la kuandika mwenyewe (linahitaji API key yako)" }
+    "modeBLabel": { "en": "Free-text question (needs your own API key)", "sw": "Swali la kuandika mwenyewe (linahitaji ufunguo wako wa API)", "sheng": "Swali la kuandika mwenyewe (linahitaji API key yako)" },
+    "personalizedBadge": { "en": "Personalized from your diary", "sw": "Imelengwa kutoka shajara yako", "sheng": "Imelengwa kutoka diary yako" },
+    "generalBadge": { "en": "General guidance", "sw": "Ushauri wa jumla", "sheng": "General guidance" }
   },
   "settings": {
     "title": { "en": "Settings", "sw": "Mipangilio", "sheng": "Settings" },

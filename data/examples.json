@@ -1,0 +1,86 @@
+{
+  "_readme": "One-tap preset diary nights, added 2026-07-19 so a reviewer can reach different troubleshooter branches in seconds instead of hand-crafting diary values. Each entry is deliberately grounded in the same Kenyan factory/informal-settlement context as the session decks (a shift, a matatu stage, a shared room), not a generic 'bad night'. Each is calibrated against js/troubleshooter.js's flag logic to land on a specific, different branch: see the 'targetBranch' note on each (not read by the app, just documentation).",
+  "presets": [
+    {
+      "id": "worry_work",
+      "targetBranch": "cant_fall_asleep -> cant_fall_asleep_worry (elevatedSOL + anyWorryFlag)",
+      "label": {
+        "en": "Worried about the shift, mind racing",
+        "sw": "Nikiwaza kazi ya kesho, akili haikutulia",
+        "sheng": "Nikiwaza shift ya kesho, akili ilikuwa inarun"
+      },
+      "entry": {
+        "napMin": 0,
+        "bedTime": "22:30",
+        "sleepTryTime": "22:45",
+        "solMin": 50,
+        "wasoMin": 10,
+        "wakeTime": "05:00",
+        "outOfBedTime": "05:15",
+        "interference": {
+          "temperature": false,
+          "noise": false,
+          "light": false,
+          "worrySleep": false,
+          "worryWork": true,
+          "worryFamily": false
+        },
+        "sleepiness": "mild"
+      }
+    },
+    {
+      "id": "hot_noisy_room",
+      "targetBranch": "woke_in_night -> woke_in_night_environment (highWASO + anyEnvironmentFlag)",
+      "label": {
+        "en": "Room was hot, matatu stage noise all night",
+        "sw": "Chumba kilikuwa na joto, kelele za stendi ya matatu usiku kucha",
+        "sheng": "Room ilikuwa na moto, noise ya stage ya matatu usiku mzima"
+      },
+      "entry": {
+        "napMin": 0,
+        "bedTime": "22:00",
+        "sleepTryTime": "22:10",
+        "solMin": 15,
+        "wasoMin": 45,
+        "wakeTime": "05:30",
+        "outOfBedTime": "05:40",
+        "interference": {
+          "temperature": true,
+          "noise": true,
+          "light": false,
+          "worrySleep": false,
+          "worryWork": false,
+          "worryFamily": false
+        },
+        "sleepiness": "mild"
+      }
+    },
+    {
+      "id": "napped_after_shift",
+      "targetBranch": "daytime_sleepy -> daytime_sleepy_napped (nappedYesterday, sleepiness kept below 'high' so it does not also match daytime_sleepy_high)",
+      "label": {
+        "en": "Napped after a long shift, sleepy all day",
+        "sw": "Nililala mchana baada ya zamu ndefu, nilisinzia mchana kucha",
+        "sheng": "Nililala mchana baada ya shift ndefu, nilikuwa sleepy mchana mzima"
+      },
+      "entry": {
+        "napMin": 45,
+        "bedTime": "21:45",
+        "sleepTryTime": "21:50",
+        "solMin": 10,
+        "wasoMin": 5,
+        "wakeTime": "05:00",
+        "outOfBedTime": "05:10",
+        "interference": {
+          "temperature": false,
+          "noise": false,
+          "light": false,
+          "worrySleep": false,
+          "worryWork": false,
+          "worryFamily": false
+        },
+        "sleepiness": "mild"
+      }
+    }
+  ]
+}

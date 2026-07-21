@@ -177,6 +177,57 @@ structured backstop at all (see `js/app.js`, `askGenerativeLayer`).
    the branching logic is mechanical, but the actual advice text should be
    read end to end by someone clinically qualified before this is treated
    as more than a demo.
+7. **The `daytime_sleepy_high` driving/machinery caution is new safety
+   content, not condensed from any session deck.** A background content
+   audit (2026-07-19) flagged that no deck anywhere mentions driving or
+   machinery safety; this line was written for the demo's safety story and
+   needs explicit sign-off, not just a fidelity check.
+8. **The 6-hour caffeine cutoff** (session 3, both the deck and the app)
+   is more lenient than the ARISE manual's own stated rationale, which
+   implies an 8 to 10 hour effective window. This predates the app (it is
+   already in `session3_slides.tex`), so it may be a deliberate
+   cultural-feasibility call given local chai-drinking patterns, or an
+   unflagged rounding during the session 3 rebuild — worth a direct answer
+   either way, since the app just inherited it faithfully.
+
+A full content-quality audit against the four session decks (participant
+slides and facilitator notes) and the ARISE manual ran 2026-07-19; items 7
+and 8 above come from it, along with three session-content restorations
+already applied (the session 1 predisposition factor, session 3's "the
+window and four rules still do the heavy lifting" framing, and session 4's
+"poor sleep as a warning sign" framing) and a new differentiated branch on
+the `woke_early` topic, which previously showed the same generic message
+regardless of diary data (see "Context-specific examples" below).
+
+## Context-specific examples (Ask screen)
+
+The scripted troubleshooter's whole pitch is that it answers from the
+person's own diary, not a canned script, but a reviewer who never enters
+diary data specifically engineered to trigger a branch would only ever see
+generic fallback text and could reasonably conclude the app is not actually
+context-specific. Two additions (2026-07-19) make this visible:
+
+- **"Try an example night"** on the Diary screen: three one-tap presets
+  (`data/examples.json`), each a realistic night grounded in the same
+  Kenyan factory/informal-settlement context as the session decks (a
+  worried night before a shift, a hot room by a noisy matatu stage, a nap
+  after a long shift), each calibrated to land on a different
+  troubleshooter branch. Tapping one fills in and saves a diary night
+  through the real pipeline, the same `computeNight`/`upsertDiaryEntry`
+  path a manually entered night uses, not a special-cased demo shortcut.
+- **A "Personalized from your diary" / "General guidance" badge** on every
+  Ask-screen response (`js/troubleshooter.js` `evaluateTopic` now returns
+  whether a branch actually matched), so the distinction between a
+  diary-driven answer and the generic fallback is visible at a glance
+  rather than only implicit in the response's prose.
+
+`woke_early` previously had zero branches and always showed the same
+message regardless of diary data — the one topic where "context-specific"
+demonstrably wasn't happening. It now compares the night's wake time
+against the person's committed wake-time anchor (`wokeEarlyVsAnchor` in
+`js/troubleshooter.js`) and differentiates a worry-linked early wake from a
+plain one, matching the pattern already used by the other two symptom
+topics (`cant_fall_asleep`, `woke_in_night`).
 
 ## Language and translation
 

@@ -1,5 +1,5 @@
 {
-  "_readme": "Deterministic scripted troubleshooter. Each topic is a fixed prompt the user taps (no free-text parsing, so nothing here can hallucinate). branches are evaluated in order; the first whose conditions all match against the computed diary-state flags is shown; otherwise fallback is shown. conditions reference flags computed in js/troubleshooter.js from the last valid diary night, never raw free text. Two topics route straight to the safety gate instead of returning a branch response: see routesToSafety. This library doubles as the seed seat for the Level 1 golden dataset the DIV application budgets for (structured input-state to known-correct-output pairs).",
+  "_readme": "Deterministic scripted troubleshooter. Each topic is a fixed prompt the user taps (no free-text parsing, so nothing here can hallucinate). branches are evaluated in order; the first whose conditions all match against the computed diary-state flags is shown; otherwise fallback is shown. conditions reference flags computed in js/troubleshooter.js from the last valid diary night, never raw free text. One topic (possible_apnea) routes straight to the safety gate instead of returning a branch response: see routesToSafety. This library doubles as the seed seat for the Level 1 golden dataset the DIV application budgets for (structured input-state to known-correct-output pairs). The daytime_sleepy_high branch's driving/machinery caution is new safety content, not condensed from any session deck: flagged for Sean Drummond's sign-off, see the app's README.",
   "flags": {
     "elevatedSOL": "last valid night's solMin >= 30",
     "highWASO": "last valid night's wasoMin >= 30",
@@ -10,7 +10,10 @@
     "flagWorrySleep": "last valid night's interference.worrySleep is true",
     "flagWorryWork": "last valid night's interference.worryWork is true",
     "flagWorryFamily": "last valid night's interference.worryFamily is true",
-    "sleepinessHighOrDangerous": "last valid night's sleepiness is 'high' or 'dangerous'"
+    "anyWorryFlag": "true if any of flagWorrySleep/flagWorryWork/flagWorryFamily is true",
+    "anyEnvironmentFlag": "true if any of flagTemperature/flagNoise/flagLight is true",
+    "sleepinessHighOrDangerous": "last valid night's sleepiness is 'high' or 'dangerous'",
+    "wokeEarlyVsAnchor": "last valid night's wakeTime is 30 to 180 minutes before the committed wake-time anchor (state.wakeTime)"
   },
   "topics": [
     {
@@ -92,11 +95,33 @@
         "sw": "Niliamka mapema mno na sikuweza kurudi kulala",
         "sheng": "Niliamkia mapema sana sikuweza kurudi kulala"
       },
-      "branches": [],
+      "branches": [
+        {
+          "id": "woke_early_worry",
+          "when": [
+            { "flag": "wokeEarlyVsAnchor", "equals": true },
+            { "flag": "anyWorryFlag", "equals": true }
+          ],
+          "response": {
+            "en": "Your diary shows you woke up well before your usual time, and you marked worry as part of what disturbed you. Try moving tonight's worry time earlier in the evening so it is already dealt with before bed. Keep your wake-up time exactly as planned: getting up and into daylight, rather than lying there turning worries over, helps tonight's sleep debt build correctly.",
+            "sw": "Shajara yako inaonyesha uliamka mapema mno kuliko kawaida yako, na uliweka alama kuwa wasiwasi ulikuwa sehemu ya kilichokusumbua. Jaribu kuhamisha muda wako wa kuwaza wasiwasi mapema jioni ili uwe umeshughulikiwa kabla ya kulala. Weka muda wako wa kuamka sawasawa kama ulivyopangwa: kuamka na kwenda kwenye mwanga wa mchana, badala ya kulala hapo ukiwaza wasiwasi, kunasaidia deni la usingizi la usiku huu kujengeka vizuri.",
+            "sheng": "Diary yako inaonyesha uliamka mapema sana kuliko kawaida yako, na ulimark worry kama part ya kilichokusumbua. Try kuhamisha worry time yako mapema jioni ili iwe imeshughulikiwa kabla ya kulala. Weka wake time yako sawa sawa kama ulivyopanga: kuamka na kwenda kwa mwanga wa mchana, badala ya kulala hapo ukiwaza worry, inasaidia sleep debt ya usiku huu kujengeka vizuri."
+          }
+        },
+        {
+          "id": "woke_early_vs_anchor",
+          "when": [{ "flag": "wokeEarlyVsAnchor", "equals": true }],
+          "response": {
+            "en": "Your diary shows you woke up well before your usual time this morning. Keep your wake-up time exactly as planned, even after a morning like this: staying in bed longer reopens the gap between time in bed and time asleep. If you are lying there awake, get up per rule 3 rather than dozing on and off.",
+            "sw": "Shajara yako inaonyesha uliamka mapema mno kuliko kawaida yako asubuhi hii. Weka muda wako wa kuamka sawasawa kama ulivyopangwa, hata baada ya asubuhi kama hii: kukaa kitandani zaidi kunafungua tena pengo kati ya muda kitandani na muda wa kulala. Ukiwa umelala hapo ukiwa macho, amka kulingana na kanuni ya 3 badala ya kusinzia mara kwa mara.",
+            "sheng": "Diary yako inaonyesha uliamka mapema sana kuliko kawaida yako asubuhi hii. Weka wake time yako sawa sawa kama ulivyopanga, hata baada ya asubuhi kama hii: kukaa bedani zaidi inafungua tena gap kati ya time in bed na time asleep. Ukiwa umelala hapo umeamka, toka kulingana na rule 3 badala ya kusinzia mara kwa mara."
+          }
+        }
+      ],
       "fallback": {
-        "en": "Keep your wake-up time exactly as planned, even after a night like this: staying in bed longer reopens the gap between time in bed and time asleep. If you are lying there awake, get up per rule 3 rather than dozing on and off. Bright light and activity once you are up help set tomorrow night's sleep. Early waking that does not repeat is common while your body adjusts; if it keeps happening for several nights, mention it to your facilitator.",
-        "sw": "Weka muda wako wa kuamka sawasawa kama ulivyopangwa, hata baada ya usiku kama huu: kukaa kitandani zaidi kunafungua tena pengo kati ya muda kitandani na muda wa kulala. Ukiwa umelala hapo ukiwa macho, amka kulingana na kanuni ya 3 badala ya kusinzia mara kwa mara. Mwanga mkali na shughuli mara ukiwa umeamka vinasaidia kuweka usingizi wa usiku ujao. Kuamka mapema ambako hakujirudia mara kwa mara ni jambo la kawaida wakati mwili wako unazoea; likiendelea kwa usiku kadhaa, mwambie mwezeshaji wako.",
-        "sheng": "Weka wake time yako sawa sawa kama ulivyopanga, hata baada ya usiku kama hii: kukaa bedani zaidi inafungua tena gap kati ya time in bed na time asleep. Ukiwa umelala hapo umeamka, toka kulingana na rule 3 badala ya kusinzia mara kwa mara. Mwanga bright na kufanya kitu mara ukiwa umeamka inasaidia kuset sleep ya usiku unaofuata. Kuamkia mapema ambayo haijirudii mara kwa mara ni kitu ya kawaida wakati mwili wako unazoea; ikiendelea kwa nights kadhaa, mwambie facilitator wako."
+        "en": "Early waking that does not repeat every night is common while your body adjusts to the new window, especially in the first couple of weeks. If you are lying there awake, get up per rule 3 rather than dozing on and off. If this keeps happening for several nights in a row, mention it to your facilitator; the weekly window review takes it into account.",
+        "sw": "Kuamka mapema ambako hakujirudia kila usiku ni jambo la kawaida wakati mwili wako unazoea dirisha jipya, hasa wiki za kwanza. Ukiwa umelala hapo ukiwa macho, amka kulingana na kanuni ya 3 badala ya kusinzia mara kwa mara. Likiendelea kwa usiku kadhaa mfululizo, mwambie mwezeshaji wako; mapitio ya kila wiki ya dirisha yanazingatia hili.",
+        "sheng": "Kuamkia mapema ambayo haijirudii kila usiku ni kitu ya kawaida wakati mwili wako unazoea window mpya, especially weeks za kwanza. Ukiwa umelala hapo umeamka, toka kulingana na rule 3 badala ya kusinzia mara kwa mara. Ikiendelea kwa nights kadhaa mfululizo, mwambie facilitator wako; weekly window review inazingatia hii."
       }
     },
     {

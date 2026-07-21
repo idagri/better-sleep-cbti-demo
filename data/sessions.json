@@ -21,9 +21,9 @@
           "sheng": "Poor sleep inaeffect kazi yako, kumbukumbu, mood yako, mwili, na akili yako. Ukipata usingizi mzuri, kila kitu kinakuwa poa."
         },
         {
-          "en": "Insomnia often starts with a reason, such as stress, illness, or a new baby, but is kept going by the habits that follow: chasing more sleep, lying awake in bed, naps, and untreated worry.",
-          "sw": "Kukosa usingizi mara nyingi kunaanza kwa sababu fulani (msongo wa mawazo, ugonjwa, mtoto mchanga) lakini kunaendelea kutokana na tabia zinazofuata: kutafuta usingizi zaidi, kulala kitandani ukiwa macho, kulala mchana, na wasiwasi usiotibiwa.",
-          "sheng": "Insomnia mara nyingi inaanza na sababu fulani (stress, sickness, mtoto mchanga) lakini inaendelea kwa sababu ya tabia zinazofuata: kuchase sleep zaidi, kulala kitandani ukiwa umeamka, kulala mchana, na kuworry bila kushughulikia."
+          "en": "Some of us sleep lighter or worry more by nature. On top of that, insomnia often starts with a reason, such as stress, illness, or a new baby, but is kept going by the habits that follow: chasing more sleep, lying awake in bed, naps, and untreated worry.",
+          "sw": "Baadhi yetu tunalala kwa wepesi zaidi au tunawaza zaidi kwa asili. Zaidi ya hayo, kukosa usingizi mara nyingi kunaanza kwa sababu fulani (msongo wa mawazo, ugonjwa, mtoto mchanga) lakini kunaendelea kutokana na tabia zinazofuata: kutafuta usingizi zaidi, kulala kitandani ukiwa macho, kulala mchana, na wasiwasi usiotibiwa.",
+          "sheng": "Wengine wetu tunalala kwa lightly zaidi ama tunaworry zaidi by nature. Juu ya hiyo, insomnia mara nyingi inaanza na sababu fulani (stress, sickness, mtoto mchanga) lakini inaendelea kwa sababu ya tabia zinazofuata: kuchase sleep zaidi, kulala kitandani ukiwa umeamka, kulala mchana, na kuworry bila kushughulikia."
         },
         {
           "en": "This program works on those habits and on the learned reflex that your bed itself now wakes you up.",
@@ -128,6 +128,11 @@
       },
       "points": [
         {
+          "en": "Today's habits are the easier layer on top of the real work. Your window and the four rules from session 2 still do the heavy lifting; these small habits just make them easier.",
+          "sw": "Tabia za leo ni safu rahisi zaidi juu ya kazi halisi. Dirisha lako na kanuni nne kutoka kikao cha 2 bado ndizo zinazofanya kazi kubwa; tabia hizi ndogo zinafanya tu ziwe rahisi zaidi.",
+          "sheng": "Habits za leo ni layer rahisi zaidi juu ya kazi halisi. Window yako na rules nne kutoka session ya 2 bado ndizo zinafanya kazi kubwa; hizi small habits zinafanya tu ziwe rahisi zaidi."
+        },
+        {
           "en": "Avoid chai, jaba, or khat for at least 6 hours before bed: caffeine stays in your body for hours. Avoid cigarettes for at least 2 hours before bed. Alcohol can help you drop off, then wake you around 3 a.m.",
           "sw": "Epuka chai, jaba, au miraa kwa angalau masaa 6 kabla ya kulala: kafeini inabaki mwilini kwako kwa masaa mengi. Epuka sigara kwa angalau masaa 2 kabla ya kulala. Pombe inaweza kukusaidia kupata usingizi, kisha ikakuamsha karibu saa tisa usiku.",
           "sheng": "Epuka chai, jaba, ama miraa angalau masaa 6 kabla ya kulala: caffeine inabaki mwilini kwa masaa mob. Epuka sigara angalau masaa 2 kabla ya kulala. Pombe inaweza kukusaidia u-drop off, kisha ikakuamsha around saa tisa usiku."
@@ -174,9 +179,9 @@
       },
       "points": [
         {
-          "en": "Stress feeds bad sleep, and bad sleep feeds stress. Two ways to break the loop: calm the mind and calm the body.",
-          "sw": "Msongo wa mawazo unalisha usingizi mbaya, na usingizi mbaya unalisha msongo wa mawazo. Kuna njia mbili za kuvunja mzunguko huo: kutuliza akili na kutuliza mwili.",
-          "sheng": "Stress inalisha bad sleep, na bad sleep inalisha stress. Kuna njia mbili za kuvunja hiyo loop: kutuliza akili na kutuliza mwili."
+          "en": "Stress feeds bad sleep, and bad sleep feeds stress; poor sleep is often your body's warning sign worth listening to, not just an inconvenience. Two ways to break the loop: calm the mind and calm the body.",
+          "sw": "Msongo wa mawazo unalisha usingizi mbaya, na usingizi mbaya unalisha msongo wa mawazo; usingizi mbaya mara nyingi ni ishara ya tahadhari kutoka kwa mwili wako inayostahili kusikilizwa, si usumbufu tu. Kuna njia mbili za kuvunja mzunguko huo: kutuliza akili na kutuliza mwili.",
+          "sheng": "Stress inalisha bad sleep, na bad sleep inalisha stress; poor sleep mara nyingi ni warning sign kutoka kwa mwili wako ambayo inastahili kusikizwa, sio tu usumbufu. Kuna njia mbili za kuvunja hiyo loop: kutuliza akili na kutuliza mwili."
         },
         {
           "en": "Mind tool, worry time: give worry a time slot in the early evening, in a specific spot that is not your bed, 15 minutes with paper and pen, writing each worry down with one small step, then close the notebook. At 1 a.m. you can tell yourself: I dealt with you, your time is tomorrow.",

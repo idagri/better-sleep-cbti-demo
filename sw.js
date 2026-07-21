@@ -1,7 +1,7 @@
 // Cache-first app shell so the demo works with no connectivity after the
 // first load. Bump CACHE_NAME whenever the precached file list changes so
 // returning visitors pick up the new version instead of a stale cache.
-const CACHE_NAME = 'cbti-demo-v2';
+const CACHE_NAME = 'cbti-demo-v3';
 
 const PRECACHE_URLS = [
   './',
@@ -15,6 +15,7 @@ const PRECACHE_URLS = [
   './data/i18n.json',
   './data/sessions.json',
   './data/troubleshooter.json',
+  './data/examples.json',
   './manifest.json',
   './icons/icon-192.png',
   './icons/icon-512.png',

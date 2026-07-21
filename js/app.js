@@ -319,6 +319,12 @@ function renderDiary() {
     <div class="screen">
       <h1>${t('diary.title', L)} &middot; ${t('diary.nightLabel', L)} ${nightNumber}</h1>
       <p class="muted">${t('diary.source', L)}</p>
+      <div class="callout">
+        <p class="section-label">${t('diary.examplesTitle', L)}</p>
+        <p class="muted small">${t('diary.examplesBody', L)}</p>
+        <div id="example-list"></div>
+        <p id="example-note" class="muted small"></p>
+      </div>
       <form id="diary-form">
         <div class="field"><label>${t('diary.napMin', L)}</label>
           <input type="number" min="0" name="napMin" value="${existing.napMin ?? ''}"></div>
@@ -396,6 +402,19 @@ function renderDiary() {
     renderDiary(); // advance to a fresh form for the next night
     appEl.querySelector('#diary-note').textContent = message;
   });
+
+  const exampleList = card.querySelector('#example-list');
+  for (const preset of getData().examples.presets) {
+    const btn = h(`<button class="btn example-btn">${pick(preset.label, L)}</button>`);
+    btn.addEventListener('click', () => {
+      upsertDiaryEntry({ ...preset.entry, date: nextDate });
+      recomputeWindow();
+      renderSafetyGate();
+      renderDiary();
+      appEl.querySelector('#example-note').textContent = t('diary.exampleLoadedNote', L);
+    });
+    exampleList.appendChild(btn);
+  }
 
   appEl.appendChild(card);
 }
@@ -498,7 +517,7 @@ function renderAsk() {
   `);
   const list = card.querySelector('#topic-list');
   const responseEl = card.querySelector('#topic-response');
-  const flags = computeDiaryFlags(state.diaryEntries, E.computeNight);
+  const flags = computeDiaryFlags(state.diaryEntries, E.computeNight, state.wakeTime);
 
   for (const topic of getData().troubleshooter.topics) {
     const btn = h(`<button class="btn topic-btn">${pick(topic.prompt, L)}</button>`);
@@ -508,8 +527,15 @@ function renderAsk() {
         renderSafetyGate();
         return;
       }
-      const response = evaluateTopic(topic, flags);
-      responseEl.innerHTML = `<div class="response-card">${pick(response, L)}</div>`;
+      const { response, matched } = evaluateTopic(topic, flags);
+      const badgeClass = matched ? 'personalized' : 'general';
+      const badgeLabel = matched ? t('ask.personalizedBadge', L) : t('ask.generalBadge', L);
+      responseEl.innerHTML = `
+        <div class="response-card">
+          <span class="badge ${badgeClass}">${badgeLabel}</span>
+          <p>${pick(response, L)}</p>
+        </div>
+      `;
     });
     list.appendChild(btn);
   }
